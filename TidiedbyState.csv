@@ -1,0 +1,174 @@
+Region,Contract_Period,Anticipated Start,Initial Referral Source,Inquired,Applied,Admitted,Confirmed,Enrolled
+Connecticut,2016 - 2017,Fall 2017,CPPX,11,0,0,0,0
+Connecticut,2016 - 2017,Fall 2018,CPPX,49,4,4,1,1
+Connecticut,2016 - 2017,Fall 2019,CPPX,25,1,1,0,0
+Connecticut,2017 - 2018,Fall 2018,CPPX,29,2,2,1,0
+Connecticut,2017 - 2018,Fall 2019,CPPX,71,2,2,0,0
+Connecticut,2017 - 2018,Fall 2020,CPPX,40,3,3,1,0
+Connecticut,2018 - 2019,Fall 2019,CPPX,8,1,1,0,0
+Connecticut,2018 - 2019,Fall 2020,CPPX,42,5,5,1,1
+Connecticut,2018 - 2019,Fall 2021,CPPX,23,0,0,0,0
+Connecticut,2018 - 2019,Fall 2022,CPPX,4,0,0,0,0
+Connecticut,2019 - 2020,Fall 2020,CPPX,6,1,1,0,0
+Connecticut,2019 - 2020,Fall 2021,CPPX,6,0,0,0,0
+Maine,2016 - 2017,Fall 2017,CPPX,26,4,4,3,2
+Maine,2016 - 2017,Fall 2018,CPPX,175,75,73,28,26
+Maine,2016 - 2017,Fall 2019,CPPX,98,44,40,15,13
+Maine,2016 - 2017,Fall 2020,CPPX,47,30,26,8,6
+Maine,2016 - 2017,Fall 2021,CPPX,3,1,1,0,0
+Maine,2017 - 2018,Fall 2018,CPPX,23,4,4,2,2
+Maine,2017 - 2018,Fall 2019,CPPX,84,37,34,12,11
+Maine,2017 - 2018,Fall 2020,CPPX,104,46,40,13,9
+Maine,2017 - 2018,Fall 2021,CPPX,12,0,0,0,0
+Maine,2018 - 2019,Fall 2019,CPPX,18,2,2,1,1
+Maine,2018 - 2019,Fall 2020,CPPX,282,145,138,11,1
+Maine,2018 - 2019,Fall 2021,CPPX,45,0,0,0,0
+Maine,2018 - 2019,Fall 2022,CPPX,9,0,0,0,0
+Maine,2018 - 2019,Fall 2023,CPPX,1,0,0,0,0
+Maine,2019 - 2020,Fall 2020,CPPX,31,13,11,0,0
+Maine,2019 - 2020,Fall 2021,CPPX,13,0,0,0,0
+Maine,2019 - 2020,Fall 2022,CPPX,10,0,0,0,0
+Massachusetts,2016 - 2017,Fall 2017,CPPX,25,4,3,2,2
+Massachusetts,2016 - 2017,Fall 2018,CPPX,97,5,5,0,0
+Massachusetts,2016 - 2017,Fall 2019,CPPX,37,3,3,1,0
+Massachusetts,2016 - 2017,Fall 2020,CPPX,2,1,1,1,1
+Massachusetts,2017 - 2018,Fall 2018,CPPX,37,1,1,0,0
+Massachusetts,2017 - 2018,Fall 2019,CPPX,92,8,6,0,0
+Massachusetts,2017 - 2018,Fall 2020,CPPX,45,4,2,0,0
+Massachusetts,2017 - 2018,Fall 2021,CPPX,2,0,0,0,0
+Massachusetts,2018 - 2019,Fall 2017,CPPX,1,0,0,0,0
+Massachusetts,2018 - 2019,Fall 2019,CPPX,6,1,1,0,0
+Massachusetts,2018 - 2019,Fall 2020,CPPX,95,20,20,2,0
+Massachusetts,2018 - 2019,Fall 2021,CPPX,41,0,0,0,0
+Massachusetts,2018 - 2019,Fall 2022,CPPX,1,0,0,0,0
+Massachusetts,2019 - 2020,Fall 2020,CPPX,7,3,3,0,0
+Massachusetts,2019 - 2020,Fall 2021,CPPX,8,0,0,0,0
+Massachusetts,2019 - 2020,Fall 2022,CPPX,4,0,0,0,0
+New Hampshire,2016 - 2017,Fall 2017,CPPX,7,3,3,1,1
+New Hampshire,2016 - 2017,Fall 2018,CPPX,75,16,14,4,4
+New Hampshire,2016 - 2017,Fall 2019,CPPX,36,3,2,0,0
+New Hampshire,2016 - 2017,Fall 2020,CPPX,2,0,0,0,0
+New Hampshire,2017 - 2018,Fall 2018,CPPX,11,2,2,0,0
+New Hampshire,2017 - 2018,Fall 2019,CPPX,32,4,4,3,3
+New Hampshire,2017 - 2018,Fall 2020,CPPX,25,4,3,0,0
+New Hampshire,2017 - 2018,Fall 2021,CPPX,1,0,0,0,0
+New Hampshire,2018 - 2019,Fall 2019,CPPX,3,0,0,0,0
+New Hampshire,2018 - 2019,Fall 2020,CPPX,60,16,16,0,0
+New Hampshire,2018 - 2019,Fall 2021,CPPX,20,0,0,0,0
+New Hampshire,2018 - 2019,Fall 2022,CPPX,4,0,0,0,0
+New Hampshire,2019 - 2020,Fall 2020,CPPX,2,0,0,0,0
+New Hampshire,2019 - 2020,Fall 2021,CPPX,9,0,0,0,0
+New Hampshire,2019 - 2020,Fall 2022,CPPX,3,0,0,0,0
+Rhode Island,2016 - 2017,Fall 2017,CPPX,3,1,0,0,0
+Rhode Island,2016 - 2017,Fall 2018,CPPX,14,0,0,0,0
+Rhode Island,2016 - 2017,Fall 2019,CPPX,11,0,0,0,0
+Rhode Island,2017 - 2018,Fall 2018,CPPX,8,0,0,0,0
+Rhode Island,2017 - 2018,Fall 2019,CPPX,14,1,1,0,0
+Rhode Island,2017 - 2018,Fall 2020,CPPX,14,2,2,0,0
+Rhode Island,2017 - 2018,Fall 2021,CPPX,1,0,0,0,0
+Rhode Island,2018 - 2019,Fall 2019,CPPX,3,1,1,1,0
+Rhode Island,2018 - 2019,Fall 2020,CPPX,15,5,5,0,0
+Rhode Island,2018 - 2019,Fall 2021,CPPX,6,0,0,0,0
+Rhode Island,2018 - 2019,Fall 2022,CPPX,1,0,0,0,0
+Rhode Island,2019 - 2020,Fall 2020,CPPX,3,0,0,0,0
+Rhode Island,2019 - 2020,Fall 2021,CPPX,3,0,0,0,0
+Vermont,2016 - 2017,Fall 2017,CPPX,7,2,2,1,1
+Vermont,2016 - 2017,Fall 2018,CPPX,14,4,4,4,3
+Vermont,2016 - 2017,Fall 2019,CPPX,2,1,0,0,0
+Vermont,2017 - 2018,Fall 2018,CPPX,8,3,1,1,0
+Vermont,2017 - 2018,Fall 2019,CPPX,14,3,2,0,0
+Vermont,2017 - 2018,Fall 2020,CPPX,5,1,1,0,0
+Vermont,2018 - 2019,Fall 2018,CPPX,1,0,0,0,0
+Vermont,2018 - 2019,Fall 2019,CPPX,5,0,0,0,0
+Vermont,2018 - 2019,Fall 2020,CPPX,14,4,4,1,0
+Vermont,2018 - 2019,Fall 2021,CPPX,6,0,0,0,0
+Vermont,2018 - 2019,Fall 2022,CPPX,1,0,0,0,0
+Vermont,2019 - 2020,Fall 2020,CPPX,2,1,1,0,0
+Vermont,2019 - 2020,Fall 2021,CPPX,3,0,0,0,0
+Other,2016 - 2017,Fall 2017,CPPX,146,3,2,0,0
+Other,2016 - 2017,Fall 2018,CPPX,152,2,1,0,0
+Other,2016 - 2017,Fall 2019,CPPX,117,0,0,0,0
+Other,2017 - 2018,Fall 2017,CPPX,2,0,0,0,0
+Other,2017 - 2018,Fall 2018,CPPX,107,0,0,0,0
+Other,2017 - 2018,Fall 2019,CPPX,103,2,1,1,1
+Other,2017 - 2018,Fall 2020,CPPX,81,9,7,1,1
+Other,2017 - 2018,Fall 2021,CPPX,6,0,0,0,0
+Other,2018 - 2019,Fall 2017,CPPX,2,0,0,0,0
+Other,2018 - 2019,Fall 2018,CPPX,7,0,0,0,0
+Other,2018 - 2019,Fall 2019,CPPX,45,0,0,0,0
+Other,2018 - 2019,Fall 2020,CPPX,408,23,21,2,1
+Other,2018 - 2019,Fall 2021,CPPX,115,0,0,0,0
+Other,2018 - 2019,Fall 2022,CPPX,26,0,0,0,0
+Other,2018 - 2019,Fall 2023,CPPX,8,0,0,0,0
+Other,2018 - 2019,Fall 2024 & Later,CPPX,2,0,0,0,0
+Other,2019 - 2020,Fall 2020,CPPX,54,1,1,0,0
+Other,2019 - 2020,Fall 2021,CPPX,44,0,0,0,0
+Other,2019 - 2020,Fall 2022,CPPX,21,0,0,0,0
+Connecticut,2016 - 2017,Fall 2017,HBSN,23,7,5,1,1
+Connecticut,2016 - 2017,Fall 2018,HBSN,12,2,1,0,0
+Connecticut,2016 - 2017,Fall 2019,HBSN,1,1,1,0,0
+Connecticut,2017 - 2018,Fall 2018,HBSN,23,10,9,0,0
+Connecticut,2017 - 2018,Fall 2019,HBSN,38,15,10,2,2
+Connecticut,2018 - 2019,Fall 2019,HBSN,34,9,4,2,1
+Connecticut,2018 - 2019,Fall 2020,HBSN,14,3,3,0,0
+Connecticut,2019 - 2020,Fall 2020,HBSN,37,18,15,0,0
+Connecticut,2019 - 2020,Fall 2021,HBSN,12,0,0,0,0
+Maine,2016 - 2017,Fall 2017,HBSN,21,15,14,6,5
+Maine,2016 - 2017,Fall 2018,HBSN,139,100,93,37,30
+Maine,2016 - 2017,Fall 2019,HBSN,9,8,6,4,3
+Maine,2016 - 2017,Fall 2020,HBSN,4,4,1,0,0
+Maine,2017 - 2018,Fall 2018,HBSN,85,46,37,19,17
+Maine,2017 - 2018,Fall 2019,HBSN,197,141,129,51,42
+Maine,2017 - 2018,Fall 2020,HBSN,15,14,11,6,1
+Maine,2017 - 2018,Fall 2021,HBSN,1,0,0,0,0
+Maine,2018 - 2019,Fall 2019,HBSN,59,35,31,17,13
+Maine,2018 - 2019,Fall 2020,HBSN,47,34,33,7,0
+Maine,2018 - 2019,Fall 2021,HBSN,1,0,0,0,0
+Maine,2019 - 2020,Fall 2020,HBSN,156,97,90,3,0
+Maine,2019 - 2020,Fall 2021,HBSN,10,0,0,0,0
+Massachusetts,2016 - 2017,Fall 2017,HBSN,111,33,23,0,0
+Massachusetts,2016 - 2017,Fall 2018,HBSN,74,13,12,1,1
+Massachusetts,2016 - 2017,Fall 2019,HBSN,4,1,1,1,0
+Massachusetts,2016 - 2017,Fall 2020,HBSN,1,0,0,0,0
+Massachusetts,2017 - 2018,Fall 2018,HBSN,60,28,23,0,0
+Massachusetts,2017 - 2018,Fall 2019,HBSN,70,18,14,2,2
+Massachusetts,2017 - 2018,Fall 2020,HBSN,1,0,0,0,0
+Massachusetts,2018 - 2019,Fall 2019,HBSN,106,22,18,1,1
+Massachusetts,2018 - 2019,Fall 2020,HBSN,25,3,3,0,0
+Massachusetts,2018 - 2019,Fall 2021,HBSN,3,0,0,0,0
+Massachusetts,2019 - 2020,Fall 2020,HBSN,117,30,23,0,0
+Massachusetts,2019 - 2020,Fall 2021,HBSN,29,0,0,0,0
+New Hampshire,2016 - 2017,Fall 2017,HBSN,17,10,8,0,0
+New Hampshire,2016 - 2017,Fall 2018,HBSN,37,9,5,0,0
+New Hampshire,2016 - 2017,Fall 2019,HBSN,3,1,1,0,0
+New Hampshire,2016 - 2017,Fall 2020,HBSN,1,0,0,0,0
+New Hampshire,2017 - 2018,Fall 2018,HBSN,21,8,7,0,0
+New Hampshire,2017 - 2018,Fall 2019,HBSN,54,18,17,2,2
+New Hampshire,2017 - 2018,Fall 2020,HBSN,1,0,0,0,0
+New Hampshire,2018 - 2019,Fall 2019,HBSN,15,6,4,0,0
+New Hampshire,2018 - 2019,Fall 2020,HBSN,18,9,9,0,0
+New Hampshire,2019 - 2020,Fall 2020,HBSN,33,9,8,1,0
+New Hampshire,2019 - 2020,Fall 2021,HBSN,14,0,0,0,0
+New Hampshire,2019 - 2020,Fall 2022,HBSN,1,0,0,0,0
+Rhode Island,2017 - 2018,Fall 2018,HBSN,1,0,0,0,0
+Vermont,2016 - 2017,Fall 2017,HBSN,9,4,2,1,1
+Vermont,2016 - 2017,Fall 2018,HBSN,5,1,0,0,0
+Vermont,2017 - 2018,Fall 2018,HBSN,17,10,9,1,1
+Vermont,2017 - 2018,Fall 2019,HBSN,18,10,7,2,2
+Vermont,2017 - 2018,Fall 2020,HBSN,1,1,1,1,0
+Vermont,2018 - 2019,Fall 2019,HBSN,9,4,4,1,0
+Vermont,2018 - 2019,Fall 2020,HBSN,9,1,1,0,0
+Vermont,2018 - 2019,Fall 2021,HBSN,1,0,0,0,0
+Vermont,2019 - 2020,Fall 2020,HBSN,26,11,10,0,0
+Vermont,2019 - 2020,Fall 2021,HBSN,3,0,0,0,0
+Other,2016 - 2017,Fall 2017,HBSN,222,0,0,0,0
+Other,2016 - 2017,Fall 2018,HBSN,20,1,1,0,0
+Other,2016 - 2017,Fall 2019,HBSN,2,0,0,0,0
+Other,2017 - 2018,Fall 2018,HBSN,21,10,8,3,3
+Other,2017 - 2018,Fall 2019,HBSN,4,0,0,0,0
+Other,2018 - 2019,Fall 2019,HBSN,49,8,5,0,0
+Other,2018 - 2019,Fall 2020,HBSN,16,1,1,0,0
+Other,2018 - 2019,Fall 2021,HBSN,1,0,0,0,0
+Other,2019 - 2020,Fall 2020,HBSN,74,6,4,1,0
+Other,2019 - 2020,Fall 2021,HBSN,20,0,0,0,0
+Other,2019 - 2020,Fall 2022,HBSN,3,0,0,0,0

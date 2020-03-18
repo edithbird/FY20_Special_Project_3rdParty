@@ -1,0 +1,233 @@
+---
+title: "Marketing Report"
+subtitle: "Office of Marketing and Brand Management"
+date: "`r Sys.Date()`"
+output: 
+  pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE
+)
+library(dplyr)
+library(knitr)
+library(kableExtra)
+library(tinytex)
+```
+
+
+
+```{r, include=FALSE}
+options(tinytex.verbose = TRUE)
+```
+
+```{r}
+data <- read.csv("CombinedAndTidied.csv", header = T, stringsAsFactors = F)
+
+State <- read.csv("TidiedbyState.csv", header = T, stringsAsFactors = F)
+
+Cappex <- data %>% filter(Initial.Referral.Source == "CPPX")
+
+Hobson <- data %>% filter(Initial.Referral.Source == "HBSN")
+
+
+
+Start <- data %>% group_by(Anticipated.Start, Initial.Referral.Source) %>% summarise(Inquired = sum(Inquired), Applied = sum(Applied), Admitted = sum(Admitted), Confirmed = sum(Confirmed), Enrolled = sum(Enrolled))
+
+Start_State <- State %>% group_by(Anticipated.Start, Initial.Referral.Source, Region) %>% summarise(Inquired = sum(Inquired), Applied = sum(Applied), Admitted = sum(Admitted), Confirmed = sum(Confirmed), Enrolled = sum(Enrolled))
+
+```
+
+
+
+
+## Description
+
+In anticipation of an evaluation of third party inquiry vendors, I was asked to provide a summary of Cappex and Hobson's performance over the past three years. 
+
+Cappex and Hobson contract details are as follows:
+
+* Cappex - annual contract,  November - October, 16,500 USD
+
+* Hobson - 29,643.02 USD
+
+  + Intersect Awareness: annual contract, for the enhanced college profile and counselor community: October - September
+  
+  + Intersect Connection-Active match competitive: 6 mos: August - January
+  
+  + Intersect Connection-Active match self matching: 6 mos: August - January
+
+## Findings
+
+
+
+
+
+```{r}
+
+AnnualInquiries <- data %>% group_by(Annual_Contract, Initial.Referral.Source) %>% summarise(Inquired = sum(Inquired), Applied = sum(Applied), Admitted = sum(Admitted), Confirmed = sum(Confirmed), Enrolled = sum(Enrolled))
+kable(AnnualInquiries[,c(2:7)], "latex", caption = " Total Inquiries by Contract Period", booktabs = T) %>%
+kable_styling(full_width = T) %>%
+pack_rows(index=c("Contract 2016 - 2017 " = 2, "Contract 2017 - 2018" = 2, "Contract 2018 - 2019" = 2, "Contract 2019 - 2020" = 2))
+```
+
+
+```{r}
+kable(Start[c(1:12),c(2:7)], "latex", caption = "Total Inquiries by Anticipated Start Year", booktabs = T) %>%
+kable_styling(full_width = T) %>%
+pack_rows(index=c("Anticipated Start 2017" = 2, "Anticipated Start 2018" = 2, "Anticipated Start  2019" = 2, "Anticipated Start 2020" = 2, "Anticipated Start 2021" = 2, "Anticipated Start 2022" = 2))
+```
+
+
+
+```{r}
+kable(Cappex[c(1:10, 13:16, 18:20),c(2,4:8)], "latex", caption = "Cappex Inquiries by Contract Period", booktabs = T) %>%
+kable_styling(full_width = T) %>%
+pack_rows(index=c("Contract CPPX 2016 - 2017 " = 5, "Contract CPPX 2017 - 2018" = 5, "Contract CPPX 2018 - 2019" = 4, "Contract CPPX 2019 - 2020" = 3))
+```
+
+
+```{r}
+kable(Hobson[c(1:7, 9:14),c(2,4:8)], "latex", caption = "Hobson Inquiries by Contract Period", booktabs = T) %>%
+kable_styling(full_width = T) %>%
+pack_rows(index=c("Contract HBSN 2016 - 2017 " = 4, "Contract HBSN 2017 - 2018" = 3, "Contract HBSN 2018 - 2019" = 3, "Contract HBSN 2019 - 2020" = 3))
+```
+
+
+
+```{r eval=FALSE, include=FALSE}
+kable(Start_State[c(1:12),c(2:7)], "latex", caption = "Total Inquiries by Anticipated Start Year", booktabs = T) %>%
+kable_styling(full_width = T) %>%
+pack_rows(index=c("Anticipated Start 2017" = 2, "Anticipated Start 2018" = 2, "Anticipated Start  2019" = 2, "Anticipated Start 2020" = 2, "Anticipated Start 2021" = 2, "Anticipated Start 2022" = 2))
+
+
+```
+
+```{r}
+
+AnnualInquiriesbyState <- State %>% group_by(
+  #Contract_Period, 
+  Region,
+  Initial.Referral.Source 
+  
+  ) %>% summarise(
+  Inquired = sum(Inquired), 
+  # Applied = sum(Applied), 
+  # Admitted = sum(Admitted), 
+  # Confirmed = sum(Confirmed), 
+  Enrolled = sum(Enrolled))%>%
+    arrange(factor(Region, levels = c("Maine", "New Hampshire", "Massachusetts", "Connecticut" , "Vermont", "Rhode Island", "Other" )))
+kable(AnnualInquiriesbyState, "latex", 
+      caption = " Total Inquiries and Enrollments by State 2016-2020", booktabs = T) %>%
+  kable_styling(full_width = T) %>%
+  pack_rows(index=c("Maine" = 2, "New Hampshire" = 2, "Massachusetts" = 2, "Connecticut"  = 2,   "Vermont" = 2,"Rhode Island" = 2, "Other"=2
+                  ))
+```
+
+### Anticipated Start 2017
+
+```{r}
+AnnualInquiriesbyState <- State %>% 
+  filter(Anticipated.Start == "Fall 2017") %>% 
+  group_by(
+  #Contract_Period, 
+  Region,
+  Initial.Referral.Source 
+  
+  ) %>% summarise(
+  Inquired = sum(Inquired), 
+  # Applied = sum(Applied), 
+  # Admitted = sum(Admitted), 
+  # Confirmed = sum(Confirmed), 
+  Enrolled = sum(Enrolled)) %>%
+    arrange(factor(Region, levels = c("Maine", "New Hampshire", "Massachusetts", "Connecticut" , "Vermont", "Rhode Island", "Other" )))
+kable(AnnualInquiriesbyState, "latex", 
+      caption = "Fall 2017: Total Inquiries and Enrollments by State", booktabs = T) %>%
+  kable_styling(full_width = T) %>%
+  pack_rows(index=c("Maine" = 2, "New Hampshire" = 2, "Massachusetts" = 2, "Connecticut"  = 2,   "Vermont" = 2,"Rhode Island" = 1, "Other"=2
+                  ))
+```
+
+### Anticipated Start 2018
+
+```{r}
+AnnualInquiriesbyState <- State %>% 
+  filter(Anticipated.Start == "Fall 2018") %>% 
+  group_by(
+  #Contract_Period, 
+  Region,
+  Initial.Referral.Source 
+  
+  ) %>% summarise(
+  Inquired = sum(Inquired), 
+  # Applied = sum(Applied), 
+  # Admitted = sum(Admitted), 
+  # Confirmed = sum(Confirmed), 
+  Enrolled = sum(Enrolled)) %>%
+    arrange(factor(Region, levels = c("Maine", "New Hampshire", "Massachusetts", "Connecticut" , "Vermont", "Rhode Island", "Other" )))
+kable(AnnualInquiriesbyState, "latex", 
+      caption = "Fall 2018: Total Inquiries and Enrollments by State", booktabs = T) %>%
+  kable_styling(full_width = T) %>%
+  pack_rows(index=c("Maine" = 2, "New Hampshire" = 2, "Massachusetts" = 2, "Connecticut"  = 2,   "Vermont" = 2,"Rhode Island" = 2, "Other"=2
+                  ))
+```
+
+
+### Anticipated Start 2019
+
+```{r}
+AnnualInquiriesbyState <- State %>% 
+  filter(Anticipated.Start == "Fall 2019") %>% 
+  group_by(
+  #Contract_Period, 
+  Region,
+  Initial.Referral.Source 
+  
+  ) %>% summarise(
+  Inquired = sum(Inquired), 
+  # Applied = sum(Applied), 
+  # Admitted = sum(Admitted), 
+  # Confirmed = sum(Confirmed), 
+  Enrolled = sum(Enrolled)) %>%
+    arrange(factor(Region, levels = c("Maine", "New Hampshire", "Massachusetts", "Connecticut" , "Vermont", "Rhode Island", "Other" )))
+
+
+
+
+kable(AnnualInquiriesbyState, "latex", 
+      caption = "Fall 2019: Total Inquiries and Enrollments by State", booktabs = T) %>%
+  kable_styling(full_width = T) %>%
+  pack_rows(index=c("Maine" = 2, "New Hampshire" = 2, "Massachusetts" = 2, "Connecticut"  = 2,   "Vermont" = 2,"Rhode Island" = 1, "Other"=2
+                  ))
+```
+
+### Anticipated Start 2020
+
+```{r}
+AnnualInquiriesbyState <- State %>% 
+  filter(Anticipated.Start == "Fall 2020") %>% 
+  group_by(
+  #Contract_Period, 
+  Region,
+  Initial.Referral.Source 
+  
+  ) %>% summarise(
+  Inquired = sum(Inquired), 
+  Applied = sum(Applied),
+  Admitted = sum(Admitted),
+  #Confirmed = sum(Confirmed),
+  Enrolled = sum(Enrolled)) %>%
+    arrange(factor(Region, levels = c("Maine", "New Hampshire", "Massachusetts", "Connecticut" , "Vermont", "Rhode Island", "Other" )))
+
+kable(AnnualInquiriesbyState, "latex", 
+      caption = "Fall 2020: Total Inquiries and Enrollments by State", booktabs = T) %>%
+  kable_styling(full_width = T) %>%
+  pack_rows(index=c("Maine" = 2, "New Hampshire" = 2, "Massachusetts" = 2, "Connecticut"  = 2,   "Vermont" = 2,"Rhode Island" = 1, "Other"=2
+                  ))
+```
+
+## Conclusions
+

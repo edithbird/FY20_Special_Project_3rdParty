@@ -1,0 +1,40 @@
+---
+title: "Untitled"
+author: "Office of Marketing and Brand Management"
+date: "3/17/2020"
+output: pdf_document
+---
+
+```{include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+
+library(knitr)
+library(kableExtra)
+library(dplyr)
+
+```
+
+
+# Description
+
+
+```{r}
+ # In general,
+ #    \href{https://blog.adstage.io/facebook-ads-benchmarks}{{\color{blue}{\underline{FB Newsfeed }}}} CTR overall experienced a 24% drop from July, 2017 - July, 2018.
+```
+
+
+```{r}
+data <- read.csv("RawData.csv", header = T, stringsAsFactors = F)
+```
+
+
+
+# Findings
+
+```{r}
+kable(data) 
+```
+
+

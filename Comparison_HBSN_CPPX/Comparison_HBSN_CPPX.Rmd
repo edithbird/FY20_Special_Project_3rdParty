@@ -1,0 +1,35 @@
+---
+title: "Marketing Report"
+subtitle: "Office of Marketing and Brand Management"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+
+library(ggplot2)
+library(formatR)
+
+```
+
+# Description
+
+
+ In general,
+    \href{https://blog.adstage.io/facebook-ads-benchmarks}{{\color{blue}{\underline{FB Newsfeed }}}} CTR overall experienced a 24% drop from July, 2017 - July, 2018.
+
+
+
+# Findings
+
+## Plots
+
+
+
+```{r fig-fullwidth, echo=FALSE, fig.cap="This is a full width plot.", fig.fullwidth=TRUE, fig.height=2, fig.width=10, message=FALSE, cache=TRUE}
+
+#代码段选项`fig.fullwidth = TRUE`可以使得一幅图占用全部页宽，例如：
+ggplot(diamonds, aes(carat, price)) + geom_smooth() +
+  facet_grid(~ cut)
+```
+

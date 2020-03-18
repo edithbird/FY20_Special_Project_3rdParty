@@ -1,0 +1,441 @@
+---
+title: "Marketing Report"
+subtitle: "Office of Marketing and Brand Management"
+date: "`r Sys.Date()`"
+output:
+  tufte::tufte_handout:
+    citation_package: natbib
+    latex_engine: xelatex
+  tufte::tufte_html: default
+  tufte::tufte_book:
+    citation_package: natbib
+    latex_engine: xelatex
+bibliography: skeleton.bib
+link-citations: yes
+---
+
+```{r setup, include=FALSE}
+library(tufte)
+library(ggplot2)
+library(knitr)
+library(dplyr)
+library(kableExtra)
+
+# invalidate cache when the tufte version changes
+knitr::opts_chunk$set(
+	echo = FALSE,
+	cache.extra = packageVersion("tufte"),
+	tidy = FALSE
+)
+options(htmltools.dir.version = FALSE)
+options(tinytex.verbose = TRUE)
+```
+
+
+
+```{r}
+data <- read.csv("C:/Users/christine.iyer/Box/FY20_Inquiries/FY20_SpecialUpdate_3rdPartyInquiries/CombinedAndTidied.csv", header = T, stringsAsFactors = F)
+
+State <- read.csv("C:/Users/christine.iyer/Box/FY20_Inquiries/FY20_SpecialUpdate_3rdPartyInquiries/TidiedbyState.csv", header = T, stringsAsFactors = F)
+
+Cappex <- data %>% filter(Initial.Referral.Source == "CPPX")
+
+Hobson <- data %>% filter(Initial.Referral.Source == "HBSN")
+
+
+
+Start <- data %>% group_by(Anticipated.Start, Initial.Referral.Source) %>% summarise(Inquired = sum(Inquired), Applied = sum(Applied), Admitted = sum(Admitted), Confirmed = sum(Confirmed), Enrolled = sum(Enrolled))
+
+Start_State <- State %>% group_by(Anticipated.Start, Initial.Referral.Source, Region) %>% summarise(Inquired = sum(Inquired), Applied = sum(Applied), Admitted = sum(Admitted), Confirmed = sum(Confirmed), Enrolled = sum(Enrolled))
+
+```
+
+```{r}
+AnnualInquiries <- data %>% group_by(Annual_Contract, Initial.Referral.Source) %>% summarise(Inquired = sum(Inquired), Applied = sum(Applied), Admitted = sum(Admitted), Confirmed = sum(Confirmed), Enrolled = sum(Enrolled))
+
+```
+
+
+
+# Description
+
+
+`r newthought('In anticipation of')`an evaluation of third party inquiry vendors, I was asked to provide a summary of Cappex and Hobson's performance over the past three years. 
+
+#
+
+Cappex and Hobson contract details are as follows:
+
+* Cappex - annual contract,  November - October, 16,500 USD
+
+* Hobson - 29,643.02 USD
+
+  + Intersect Awareness: annual contract, for the enhanced college profile and counselor community: October - September
+  
+  + Intersect Connection-Active match competitive: 6 mos: August - January
+  
+  + Intersect Connection-Active match self matching: 6 mos: August - January
+
+
+
+
+# Findings
+
+
+
+
+
+```{r fig-fullwidth, echo=FALSE, fig.cap="This is a full width plot.", fig.fullwidth=TRUE, fig.height=2, fig.width=10, message=FALSE, cache=TRUE}
+
+# In general,
+#     \href{https://blog.adstage.io/facebook-ads-benchmarks}{{\color{blue}{\underline{FB Newsfeed }}}} CTR overall experienced a 24% drop from July, 2017 - July, 2018.
+
+## Plots
+
+
+
+#代码段选项`fig.fullwidth = TRUE`可以使得一幅图占用全部页宽，例如：
+# ggplot(diamonds, aes(carat, price)) + geom_smooth() +
+#   facet_grid(~ cut)
+```
+
+
+
+```{r fig-margin, fig.margin = TRUE, fig.cap = "MPG vs horsepower, colored by transmission.", fig.width=3.5, fig.height=3.5, cache=TRUE, message=FALSE}
+
+# mtcars2 <- mtcars
+# mtcars2$am <- factor(
+#   mtcars$am, labels = c('automatic', 'manual')
+# )
+# ggplot(mtcars2, aes(hp, mpg, color = am)) +
+#   geom_point() + geom_smooth() +
+#   theme(legend.position = 'bottom')
+```
+
+**Total Inquiries by Contract Period**
+
+```{r}
+
+kable(AnnualInquiries[,c(2:7)], caption = '', booktabs = T) %>%
+  kable_styling(full_width = NULL) %>%
+  pack_rows(index=c("Contract 2016 - 2017 " = 2, "Contract 2017 - 2018" = 2, "Contract 2018 - 2019" = 2, "Contract 2019 - 2020" = 2))
+```
+
+#
+
+**Total Inquiries by Anticipated Start Year**
+
+```{r }
+
+kable(Start[c(1:12),c(2:7)], caption = '', booktabs = T) %>%
+  kable_styling(full_width = NULL) %>%
+  pack_rows(index=c("Anticipated Start 2017" = 2, "Anticipated Start 2018" = 2, "Anticipated Start  2019" = 2, "Anticipated Start 2020" = 2, "Anticipated Start 2021" = 2, "Anticipated Start 2022" = 2))
+```
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+**Cappex Inquiries by Contract Period**
+
+```{r}
+kable(Cappex[c(1:10, 13:16, 18:20),c(2,4:8)],  caption = "", booktabs = T) %>%
+  kable_styling(full_width = NULL) %>%
+  pack_rows(index=c("Contract CPPX 2016 - 2017 " = 5, "Contract CPPX 2017 - 2018" = 5, "Contract CPPX 2018 - 2019" = 4, "Contract CPPX 2019 - 2020" = 3))
+```
+
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+**Hobson Inquiries by Contract Period**
+
+```{r}
+kable(Hobson[c(1:7, 9:14),c(2,4:8)], caption = "", booktabs = T) %>%
+  kable_styling(full_width = NULL) %>%
+  pack_rows(index=c("Contract HBSN 2016 - 2017 " = 4, "Contract HBSN 2017 - 2018" = 3, "Contract HBSN 2018 - 2019" = 3, "Contract HBSN 2019 - 2020" = 3))
+```
+
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+**Total Inquiries and Enrollments by State 2016-2020**
+
+```{r}
+
+AnnualInquiriesbyState <- State %>% group_by(
+  #Contract_Period, 
+  Region,
+  Initial.Referral.Source 
+  
+  ) %>% summarise(
+  Inquired = sum(Inquired), 
+  # Applied = sum(Applied), 
+  # Admitted = sum(Admitted), 
+  # Confirmed = sum(Confirmed), 
+  Enrolled = sum(Enrolled))%>%
+    arrange(factor(Region, levels = c("Maine", "New Hampshire", "Massachusetts", "Connecticut" , "Vermont", "Rhode Island", "Other" )))
+```
+
+
+```{r}
+
+kable(AnnualInquiriesbyState,
+      caption = "", booktabs = T) %>%
+  kable_styling() %>%
+  pack_rows(index=c("Maine" = 2, "New Hampshire" = 2, "Massachusetts" = 2, "Connecticut"  = 2,   "Vermont" = 2,"Rhode Island" = 2, "Other"=2
+                  ))
+```
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+**Fall 2017: Total Inquiries and Enrollments by State**
+
+```{r}
+AnnualInquiriesbyState <- State %>% 
+  filter(Anticipated.Start == "Fall 2017") %>% 
+  group_by(
+  #Contract_Period, 
+  Region,
+  Initial.Referral.Source 
+  
+  ) %>% summarise(
+  Inquired = sum(Inquired), 
+  # Applied = sum(Applied), 
+  # Admitted = sum(Admitted), 
+  # Confirmed = sum(Confirmed), 
+  Enrolled = sum(Enrolled)) %>%
+    arrange(factor(Region, levels = c("Maine", "New Hampshire", "Massachusetts", "Connecticut" , "Vermont", "Rhode Island", "Other" )))
+```
+
+
+
+```{r}
+
+kable(AnnualInquiriesbyState,
+      caption = " ", booktabs = T) %>%
+  kable_styling(full_width = NULL) %>%
+  pack_rows(index=c("Maine" = 2, "New Hampshire" = 2, "Massachusetts" = 2, "Connecticut"  = 2,   "Vermont" = 2,"Rhode Island" = 1, "Other"=2
+                  ))
+```
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+**Fall 2018: Total Inquiries and Enrollments by State**
+
+```{r}
+AnnualInquiriesbyState <- State %>% 
+  filter(Anticipated.Start == "Fall 2018") %>% 
+  group_by(
+  #Contract_Period, 
+  Region,
+  Initial.Referral.Source 
+  
+  ) %>% summarise(
+  Inquired = sum(Inquired), 
+  # Applied = sum(Applied), 
+  # Admitted = sum(Admitted), 
+  # Confirmed = sum(Confirmed), 
+  Enrolled = sum(Enrolled)) %>%
+    arrange(factor(Region, levels = c("Maine", "New Hampshire", "Massachusetts", "Connecticut" , "Vermont", "Rhode Island", "Other" )))
+
+```
+
+
+```{r}
+
+kable(AnnualInquiriesbyState, 
+      caption = " ", booktabs = T) %>%
+  kable_styling(full_width = NULL) %>%
+  pack_rows(index=c("Maine" = 2, "New Hampshire" = 2, "Massachusetts" = 2, "Connecticut"  = 2,   "Vermont" = 2,"Rhode Island" = 2, "Other"=2
+                  ))
+```
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+**Fall 2019: Total Inquiries and Enrollments by State**
+
+```{r}
+AnnualInquiriesbyState <- State %>% 
+  filter(Anticipated.Start == "Fall 2019") %>% 
+  group_by(
+  #Contract_Period, 
+  Region,
+  Initial.Referral.Source 
+  
+  ) %>% summarise(
+  Inquired = sum(Inquired), 
+  # Applied = sum(Applied), 
+  # Admitted = sum(Admitted), 
+  # Confirmed = sum(Confirmed), 
+  Enrolled = sum(Enrolled)) %>%
+    arrange(factor(Region, levels = c("Maine", "New Hampshire", "Massachusetts", "Connecticut" , "Vermont", "Rhode Island", "Other" )))
+```
+
+
+```{r}
+kable(AnnualInquiriesbyState,  
+      caption = " ", booktabs = T) %>%
+  kable_styling(full_width = NULL) %>%
+  pack_rows(index=c("Maine" = 2, "New Hampshire" = 2, "Massachusetts" = 2, "Connecticut"  = 2,   "Vermont" = 2,"Rhode Island" = 1, "Other"=2
+                  ))
+```
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+**Fall 2020: Total Inquiries and Enrollments by State**
+
+```{r}
+AnnualInquiriesbyState <- State %>% 
+  filter(Anticipated.Start == "Fall 2020") %>% 
+  group_by(
+  #Contract_Period, 
+  Region,
+  Initial.Referral.Source 
+  
+  ) %>% summarise(
+  Inquired = sum(Inquired), 
+  Applied = sum(Applied),
+  Admitted = sum(Admitted),
+  #Confirmed = sum(Confirmed),
+  Enrolled = sum(Enrolled)) %>%
+    arrange(factor(Region, levels = c("Maine", "New Hampshire", "Massachusetts", "Connecticut" , "Vermont", "Rhode Island", "Other" )))
+```
+
+
+
+```{r}
+kable(AnnualInquiriesbyState, 
+      caption = " ", booktabs = T) %>%
+  kable_styling(full_width = NULL) %>%
+  pack_rows(index=c("Maine" = 2, "New Hampshire" = 2, "Massachusetts" = 2, "Connecticut"  = 2,   "Vermont" = 2,"Rhode Island" = 1, "Other"=2
+                  ))
+```
+
+
+#
+
+#
+
+```{marginfigure, echo = TRUE}
+Notice that there is no number preceding the note. $x \in [a, b]$有
+$$\frac{d}{dx}\left( \int_{a}^{x} f(u)\,du\right)=f(x).$$
+```
+
+# Conclusion
+
+* 代码段选项
+* 代码段选项
+* 代码段选项
+
+```{r bib, include=FALSE}
+# create a bib file for the R packages used in this document
+knitr::write_bib(c('base', 'rmarkdown'), file = 'skeleton.bib')
+```
