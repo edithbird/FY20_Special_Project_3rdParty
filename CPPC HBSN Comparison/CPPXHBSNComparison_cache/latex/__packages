@@ -5,3 +5,5 @@ formatR
 dplyr
 kableExtra
 knitr
+tidyr
+gridExtra

@@ -18,10 +18,12 @@ link-citations: yes
 ```{r setup, include=FALSE}
 library(tufte)
 library(ggplot2)
+library(tidyr)
 library(knitr)
 library(dplyr)
 library(kableExtra)
-
+library(gridExtra)
+library(grid)
 # invalidate cache when the tufte version changes
 knitr::opts_chunk$set(
 	echo = FALSE,
@@ -69,7 +71,7 @@ Cappex and Hobson contract details are as follows:
 
 * Cappex - annual contract,  November - October, 16,500 USD
 
-* Hobson - 29,643.02 USD
+* Hobson - 33,560 USD
 
   + Intersect Awareness: annual contract, for the enhanced college profile and counselor community (October - September)
   
@@ -155,6 +157,7 @@ kable(Start[c(1:12),c(2:7)], caption = '', booktabs = T) %>%
 # Cappex Inquiries by Contract Period
 
 ```{r}
+
 kable(Cappex[c(1:10, 13:16, 18:20),c(2,4:8)],  caption = "", booktabs = T) %>%
   kable_styling(full_width = NULL) %>%
   pack_rows(index=c("Contract CPPX 2016 - 2017 " = 5, "Contract CPPX 2017 - 2018" = 5, "Contract CPPX 2018 - 2019" = 4, "Contract CPPX 2019 - 2020" = 3))
@@ -417,11 +420,24 @@ kable(AnnualInquiriesbyState,
 #
 
 #
+```{r}
+Contract <- c("CY20", "CY19", "CY18", "CY17", "CY16","CY20", "CY19", "CY18", "CY17", "CY16")
+  
+Vendor <- rep(c("CPPX", "HBSN"), times = c(5,5))
+  
+Inquiries <- prettyNum(c(728, 1871, 2150, 1957, 5824, 1188, 1221, 1222, 1216, 873), big.mark = ",")  
 
-```{marginfigure, echo = TRUE}
-Notice that there is no number preceding the note. $x \in [a, b]$有
-$$\frac{d}{dx}\left( \int_{a}^{x} f(u)\,du\right)=f(x).$$
+toUs <- data.frame(Contract, Vendor, Inquiries)
+Table <- toUs %>% 
+  spread(Vendor, Inquiries) %>%
+  arrange(rev(Contract))
 ```
+
+
+```{r, fig.margin = TRUE, fig.cap = "Inquiry Numbers per Vendor", fig.width=3.5, fig.height=3.5, cache=TRUE, message=FALSE}
+grid.table(Table, theme =  ttheme_minimal())
+```
+
 
 __Conclusion__
 
