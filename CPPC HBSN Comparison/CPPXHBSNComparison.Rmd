@@ -69,6 +69,7 @@ __Description__
 
 Cappex and Hobson contract details are as follows:
 
+
 * Cappex - annual contract,  November - October, 16,500 USD
 
 * Hobson - 33,560 USD
@@ -114,7 +115,27 @@ __Findings__
 #   theme(legend.position = 'bottom')
 ```
 
+
 # Total Inquiries by Contract Period
+
+
+```{r}
+Contract <- c("CY20", "CY19", "CY18", "CY17", "CY16","CY20", "CY19", "CY18", "CY17", "CY16")
+  
+Vendor <- rep(c("CPPX", "HBSN"), times = c(5,5))
+  
+Inquiries <- prettyNum(c(728, 1871, 2150, 1957, 5824, 1188, 1221, 1222, 1216, 873), big.mark = ",")  
+
+toUs <- data.frame(Contract, Vendor, Inquiries)
+Table <- toUs %>% 
+  spread(Vendor, Inquiries) %>%
+  arrange(rev(Contract))
+```
+
+
+```{r, fig.margin = TRUE, fig.width=3.5, fig.height=3.5, cache=TRUE, message=FALSE}
+grid.table(Table, theme =  ttheme_minimal())
+```
 
 ```{r}
 
@@ -420,30 +441,13 @@ kable(AnnualInquiriesbyState,
 #
 
 #
-```{r}
-Contract <- c("CY20", "CY19", "CY18", "CY17", "CY16","CY20", "CY19", "CY18", "CY17", "CY16")
-  
-Vendor <- rep(c("CPPX", "HBSN"), times = c(5,5))
-  
-Inquiries <- prettyNum(c(728, 1871, 2150, 1957, 5824, 1188, 1221, 1222, 1216, 873), big.mark = ",")  
-
-toUs <- data.frame(Contract, Vendor, Inquiries)
-Table <- toUs %>% 
-  spread(Vendor, Inquiries) %>%
-  arrange(rev(Contract))
-```
-
-
-```{r, fig.margin = TRUE, fig.cap = "Inquiry Numbers per Vendor", fig.width=3.5, fig.height=3.5, cache=TRUE, message=FALSE}
-grid.table(Table, theme =  ttheme_minimal())
-```
 
 
 __Conclusion__
 
-* 代码段选项
-* 代码段选项
-* 代码段选项
+* 
+* 
+* 
 
 ```{r bib, include=FALSE}
 # create a bib file for the R packages used in this document
