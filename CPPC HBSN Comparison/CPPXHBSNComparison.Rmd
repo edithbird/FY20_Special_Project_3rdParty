@@ -88,54 +88,28 @@ __Findings__
 
 
 
-```{r fig-fullwidth, echo=FALSE, fig.cap="This is a full width plot.", fig.fullwidth=TRUE, fig.height=2, fig.width=10, message=FALSE, cache=TRUE}
-
-# In general,
-#     \href{https://blog.adstage.io/facebook-ads-benchmarks}{{\color{blue}{\underline{FB Newsfeed }}}} CTR overall experienced a 24% drop from July, 2017 - July, 2018.
-
-## Plots
-
-
-
-#代码段选项`fig.fullwidth = TRUE`可以使得一幅图占用全部页宽，例如：
-# ggplot(diamonds, aes(carat, price)) + geom_smooth() +
-#   facet_grid(~ cut)
-```
-
-
-
-```{r fig-margin, fig.margin = TRUE, fig.cap = "MPG vs horsepower, colored by transmission.", fig.width=3.5, fig.height=3.5, cache=TRUE, message=FALSE}
-
-# mtcars2 <- mtcars
-# mtcars2$am <- factor(
-#   mtcars$am, labels = c('automatic', 'manual')
-# )
-# ggplot(mtcars2, aes(hp, mpg, color = am)) +
-#   geom_point() + geom_smooth() +
-#   theme(legend.position = 'bottom')
-```
-
 
 # Total Inquiries by Contract Period
 
-
 ```{r}
-Contract <- c("CY20", "CY19", "CY18", "CY17", "CY16","CY20", "CY19", "CY18", "CY17", "CY16")
-  
+Contract <- rep(c("CY16", "CY17", "CY18", "CY19", "CY20"), times = 2)
 Vendor <- rep(c("CPPX", "HBSN"), times = c(5,5))
-  
-Inquiries <- prettyNum(c(728, 1871, 2150, 1957, 5824, 1188, 1221, 1222, 1216, 873), big.mark = ",")  
+
+Inquiries <- prettyNum(c(5824, 1957,2150,1871, 728, 873, 1216, 1222, 1221,1188), big.mark = ",") 
 
 toUs <- data.frame(Contract, Vendor, Inquiries)
-Table <- toUs %>% 
-  spread(Vendor, Inquiries) %>%
-  arrange(rev(Contract))
-```
 
+
+Table <- toUs %>% 
+  spread(Vendor, Inquiries) 
+
+```
 
 ```{r, fig.margin = TRUE, fig.width=3.5, fig.height=3.5, cache=TRUE, message=FALSE}
 grid.table(Table, theme =  ttheme_minimal())
 ```
+  
+
 
 ```{r}
 
