@@ -100,13 +100,13 @@ Inquiries <- prettyNum(c(5824, 1957,2150,1871, 728, 873, 1216, 1222, 1221,1188),
 toUs <- data.frame(Contract, Vendor, Inquiries)
 
 
-Table <- toUs %>% 
+Tables <- toUs %>% 
   spread(Vendor, Inquiries) 
-
+#%>% arrange(rev(Contract))
 ```
 
 ```{r, fig.margin = TRUE, fig.width=3.5, fig.height=3.5, cache=TRUE, message=FALSE}
-grid.table(Table, theme =  ttheme_minimal())
+grid.table(Tables, theme =  ttheme_minimal())
 ```
   
 
