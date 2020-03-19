@@ -89,7 +89,7 @@ __Findings__
 
 
 
-# Total Inquiries by Contract Period
+# Total Inquiries (initial referral source) by Contract Period
 
 ```{r}
 Contract <- rep(c("CY16", "CY17", "CY18", "CY19", "CY20"), times = 2)
@@ -105,7 +105,7 @@ Tables <- toUs %>%
 #%>% arrange(rev(Contract))
 ```
 
-```{r, fig.margin = TRUE, fig.width=3.5, fig.height=3.5, cache=TRUE, message=FALSE}
+```{r, fig.margin = TRUE, fig.width=3.5, fig.height=3.5, fig.caption = "Inquiries per Vendor", cache=TRUE, message=FALSE}
 grid.table(Tables, theme =  ttheme_minimal())
 ```
   
@@ -122,6 +122,11 @@ kable(AnnualInquiries[,c(2:7)], caption = '', booktabs = T) %>%
 
 # Total Inquiries by Anticipated Start Year
 
+According to Aaron Deets, our CAPPEX representative, given the unpredictable nature of inquiries, considering the funnel by anticipated start year is a good way to evaluate whether we see a return on investment. The table below explores the data from this perspective. It is important to note that confirmed and enrollment numbers will surely increase for 2020, as will all stages for 2021 and 2022. Cappex is on track to surpass last year.
+
+
+
+
 ```{r }
 
 kable(Start[c(1:12),c(2:7)], caption = '', booktabs = T) %>%
@@ -137,19 +142,13 @@ kable(Start[c(1:12),c(2:7)], caption = '', booktabs = T) %>%
 
 #
 
-#
 
-#
-
-#
-
-#
-
-#
-
-#
 
 # Cappex Inquiries by Contract Period
+
+The following table shows the distribution of the of the Cappex inquiries for each contract year. The numbers are weighted heavily towards upper class students. 
+
+
 
 ```{r}
 
@@ -174,6 +173,10 @@ kable(Cappex[c(1:10, 13:16, 18:20),c(2,4:8)],  caption = "", booktabs = T) %>%
 
 
 # Hobson Inquiries by Contract Period
+
+The following table shows the distribution of the of the Hobson inquiries for each contract year. The numbers are weighted heavily towards upper class students, as for Cappex, however, the Junior:Senior ratio has been variable over the past 4 years.
+
+
 
 ```{r}
 kable(Hobson[c(1:7, 9:14),c(2,4:8)], caption = "", booktabs = T) %>%
@@ -419,9 +422,21 @@ kable(AnnualInquiriesbyState,
 
 __Conclusion__
 
-* 
-* 
-* 
+* Percent of inquiries that are the same vendor as the initial referral source 
+
+* Is it different for each vendor?
+
+* Is Cappex positive ROI
+
+* Is Hobson positive ROI
+
+* Which generates more ROI
+
+* Was the increase in Hobson cost worth the investment? TBA because we don't know if the out of state inquiries are for the RSP programs.
+
+* Is there an increase in quality applicants from either vendor.
+
+* Are conversions up or down?
 
 ```{r bib, include=FALSE}
 # create a bib file for the R packages used in this document
