@@ -1,7 +1,8 @@
 ---
-title: "Marketing Report"
-subtitle: "Office of Marketing and Brand Management"
+title: "Third Party Inquiries: Performance Review of Cappex and Hobson 2016 - 2020"
 date: "`r Sys.Date()`"
+
+
 output:
   tufte::tufte_handout:
     citation_package: natbib
@@ -57,7 +58,7 @@ AnnualInquiries <- data %>% group_by(Annual_Contract, Initial.Referral.Source) %
 
 
 
-# Description
+__Description__
 
 
 `r newthought('In anticipation of')`an evaluation of third party inquiry vendors, I was asked to provide a summary of Cappex and Hobson's performance over the past three years. 
@@ -70,16 +71,15 @@ Cappex and Hobson contract details are as follows:
 
 * Hobson - 29,643.02 USD
 
-  + Intersect Awareness: annual contract, for the enhanced college profile and counselor community: October - September
+  + Intersect Awareness: annual contract, for the enhanced college profile and counselor community (October - September)
   
-  + Intersect Connection-Active match competitive: 6 mos: August - January
+  + Intersect Connection-Active match competitive and Active match self matching: 6 mos (August - January)
   
-  + Intersect Connection-Active match self matching: 6 mos: August - January
+  + Major's Awareness: 6 mos (August - January)
+  
+  
 
-
-
-
-# Findings
+__Findings__
 
 
 
@@ -112,18 +112,18 @@ Cappex and Hobson contract details are as follows:
 #   theme(legend.position = 'bottom')
 ```
 
-**Total Inquiries by Contract Period**
+# Total Inquiries by Contract Period
 
 ```{r}
 
-kable(AnnualInquiries[,c(2:7)], caption = '', booktabs = T) %>%
+kable(AnnualInquiries[,c(2:7)], caption = '', booktabs = T) %>% 
   kable_styling(full_width = NULL) %>%
   pack_rows(index=c("Contract 2016 - 2017 " = 2, "Contract 2017 - 2018" = 2, "Contract 2018 - 2019" = 2, "Contract 2019 - 2020" = 2))
 ```
 
 #
 
-**Total Inquiries by Anticipated Start Year**
+# Total Inquiries by Anticipated Start Year
 
 ```{r }
 
@@ -152,7 +152,7 @@ kable(Start[c(1:12),c(2:7)], caption = '', booktabs = T) %>%
 
 #
 
-**Cappex Inquiries by Contract Period**
+# Cappex Inquiries by Contract Period
 
 ```{r}
 kable(Cappex[c(1:10, 13:16, 18:20),c(2,4:8)],  caption = "", booktabs = T) %>%
@@ -173,15 +173,9 @@ kable(Cappex[c(1:10, 13:16, 18:20),c(2,4:8)],  caption = "", booktabs = T) %>%
 
 #
 
-#
 
-#
 
-#
-
-#
-
-**Hobson Inquiries by Contract Period**
+# Hobson Inquiries by Contract Period
 
 ```{r}
 kable(Hobson[c(1:7, 9:14),c(2,4:8)], caption = "", booktabs = T) %>%
@@ -210,7 +204,7 @@ kable(Hobson[c(1:7, 9:14),c(2,4:8)], caption = "", booktabs = T) %>%
 
 #
 
-**Total Inquiries and Enrollments by State 2016-2020**
+# Total Inquiries and Enrollments by State 2016-2020
 
 ```{r}
 
@@ -254,7 +248,7 @@ kable(AnnualInquiriesbyState,
 
 #
 
-**Fall 2017: Total Inquiries and Enrollments by State**
+# Fall 2017: Total Inquiries and Enrollments by State
 
 ```{r}
 AnnualInquiriesbyState <- State %>% 
@@ -300,7 +294,7 @@ kable(AnnualInquiriesbyState,
 
 #
 
-**Fall 2018: Total Inquiries and Enrollments by State**
+# Fall 2018: Total Inquiries and Enrollments by State
 
 ```{r}
 AnnualInquiriesbyState <- State %>% 
@@ -346,7 +340,7 @@ kable(AnnualInquiriesbyState,
 
 #
 
-**Fall 2019: Total Inquiries and Enrollments by State**
+# Fall 2019: Total Inquiries and Enrollments by State
 
 ```{r}
 AnnualInquiriesbyState <- State %>% 
@@ -390,7 +384,7 @@ kable(AnnualInquiriesbyState,
 
 #
 
-**Fall 2020: Total Inquiries and Enrollments by State**
+# Fall 2020: Total Inquiries and Enrollments by State
 
 ```{r}
 AnnualInquiriesbyState <- State %>% 
@@ -429,7 +423,7 @@ Notice that there is no number preceding the note. $x \in [a, b]$有
 $$\frac{d}{dx}\left( \int_{a}^{x} f(u)\,du\right)=f(x).$$
 ```
 
-# Conclusion
+__Conclusion__
 
 * 代码段选项
 * 代码段选项
