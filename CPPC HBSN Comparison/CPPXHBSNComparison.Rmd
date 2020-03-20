@@ -420,7 +420,7 @@ __Conclusions__
 
 * Year over year, tuition revenue justifies the contract cost. 
 
-* In FY20, USM changed its contract with Hobson by adding additional services. It is too know whether the increase in Hobson cost worth the investment? 
+* In FY20, USM changed its contract with Hobson by adding additional services. It is too early to know whether the increase in Hobson cost has been worth the investment. 
 
 
 ```{r bib, include=FALSE}
