@@ -406,7 +406,7 @@ kable(AnnualInquiriesbyState,
 
 __Conclusions__
 
-* Since 2016, Hobsons has consistently sent ~ 1,200 inquiry names per contract period. Cappex provides more inquiry names. Overall, ~ 50% of the the names are new to the University of Southern Maine. 
+* Since 2016, Hobsons has consistently sent ~ 1,200 inquiry names per contract period. Cappex provides more inquiry names. Overall, ~ 50% of the the names are new to the University of Southern Maine. Cappex and Hobson account for 3.5% and 2.5% respectively of first-year student inquiries over the past 2 fiscal years. 
 
 * The ratio of Maine to out-of-state (New England) inquiries is similiarly ~ 30% : ~ 70% for both vendors. Neither has boasted more out-of-state enrollments. Between 80-85% of the enrollments are from in-state.
 

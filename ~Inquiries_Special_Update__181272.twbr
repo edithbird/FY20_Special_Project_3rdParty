@@ -213,6 +213,16 @@
       <column datatype='integer' default-format='n#,##0;-#,##0' name='[Admitted]' role='measure' type='quantitative' />
       <column datatype='string' name='[Anticipated Start]' role='dimension' type='nominal' />
       <column datatype='integer' default-format='n#,##0;-#,##0' name='[Applied]' role='measure' type='quantitative' />
+      <column datatype='real' default-format='p0.00%' name='[Calculation10]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM([Inquired]) / TOTAL(SUM([Inquired]))'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column datatype='real' default-format='p0.00%' name='[Calculation11]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM([Inquired]) / TOTAL(SUM([Inquired]))'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
       <column datatype='real' default-format='p0.00%' name='[Calculation1]' role='measure' type='quantitative'>
         <calculation class='tableau' formula='SUM([Inquired]) / TOTAL(SUM([Inquired]))'>
           <table-calc ordering-type='Rows' />
@@ -477,6 +487,12 @@
       </column-instance>
       <column-instance column='[Enrolled]' derivation='Sum' name='[sum:Enrolled:qk]' pivot='key' type='quantitative' />
       <column-instance column='[Inquired]' derivation='Sum' name='[sum:Inquired:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation10]' derivation='User' name='[usr:Calculation10:qk]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Rows' />
+      </column-instance>
+      <column-instance column='[Calculation11]' derivation='User' name='[usr:Calculation11:qk]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Rows' />
+      </column-instance>
       <extract count='-1' enabled='true' units='records'>
         <connection access_mode='readonly' authentication='auth-none' author-locale='en_US' class='hyper' dbname='C:/Users/christine.iyer/Documents/My Tableau Repository/Datasources/InquiriesTidied.hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='03/17/2020 07:08:55 PM' username='tableau_internal_user'>
           <relation name='Extract' table='[Extract].[Extract]' type='table' />
@@ -649,7 +665,7 @@
           </metadata-records>
         </connection>
       </extract>
-      <layout dim-ordering='alphabetic' dim-percentage='0.419146' measure-ordering='alphabetic' measure-percentage='0.580854' show-structure='true' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.404916' measure-ordering='alphabetic' measure-percentage='0.595084' show-structure='true' />
       <style>
         <style-rule element='mark'>
           <encoding attr='color' field='[Region]' type='palette'>
@@ -735,6 +751,12 @@
             </map>
             <map to='#f28e2b'>
               <bucket>&quot;[federated.0hnnfg908x7mcj15ux0xm0pnzuj7].[sum:Inquired:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0hnnfg908x7mcj15ux0xm0pnzuj7].[usr:Calculation10:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0hnnfg908x7mcj15ux0xm0pnzuj7].[usr:Calculation11:qk]&quot;</bucket>
             </map>
           </encoding>
         </style-rule>
@@ -1274,6 +1296,23 @@
         </metadata-records>
       </connection>
       <aliases enabled='yes' />
+      <column datatype='string' name='[Anticipated Start Term Year (group)]' role='dimension' type='nominal'>
+        <calculation class='categorical-bin' column='[Anticipated Start Term Year]' new-bin='true'>
+          <bin default-name='false' value='&quot;FA19&quot;'>
+            <value>&quot;Fall 2019&quot;</value>
+            <value>&quot;Jan-19&quot;</value>
+            <value>&quot;Sep-19&quot;</value>
+            <value>&quot;Spring 2019&quot;</value>
+            <value>&quot;Summer 2019&quot;</value>
+          </bin>
+          <bin default-name='false' value='&quot;FA20&quot;'>
+            <value>&quot;Fall 2020&quot;</value>
+            <value>&quot;Spring 2020&quot;</value>
+            <value>&quot;Summer 2020&quot;</value>
+          </bin>
+        </calculation>
+      </column>
+      <column datatype='string' name='[Anticipated Start Term Year]' role='dimension' type='nominal' />
       <column caption='Application Status)' datatype='string' name='[App Application Status (group)]' role='dimension' type='nominal'>
         <calculation class='categorical-bin' column='[App Application Status]' new-bin='true'>
           <bin default-name='false' value='&quot;Admitted&quot;'>
@@ -8170,8 +8209,8 @@
                 </bin>
               </calculation>
             </column>
+            <column datatype='integer' default-format='n#,##0;-#,##0' name='[Enrolled]' role='measure' type='quantitative' />
             <column datatype='string' name='[Initial Referral Source]' role='dimension' type='nominal' />
-            <column datatype='integer' default-format='n#,##0;-#,##0' name='[Inquired]' role='measure' type='quantitative' />
             <column datatype='date' name='[Month of Created Date]' role='dimension' type='ordinal' />
             <column datatype='string' name='[Primary State/Province]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
             <column datatype='string' name='[Region (group)]' role='dimension' semantic-role='[State].[Name]' type='nominal'>
@@ -8205,7 +8244,7 @@
             </column>
             <column-instance column='[Anticipated Start]' derivation='None' name='[none:Anticipated Start:nk]' pivot='key' type='nominal' />
             <column-instance column='[Initial Referral Source]' derivation='None' name='[none:Initial Referral Source:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Inquired]' derivation='Sum' name='[pcto:sum:Inquired:qk]' pivot='key' type='quantitative'>
+            <column-instance column='[Enrolled]' derivation='Sum' name='[pcto:sum:Enrolled:qk:4]' pivot='key' type='quantitative'>
               <table-calc ordering-type='Rows' type='PctTotal' />
             </column-instance>
           </datasource-dependencies>
@@ -8242,7 +8281,7 @@
             </view>
             <mark class='Automatic' />
             <encodings>
-              <text column='[federated.0hnnfg908x7mcj15ux0xm0pnzuj7].[pcto:sum:Inquired:qk]' />
+              <text column='[federated.0hnnfg908x7mcj15ux0xm0pnzuj7].[pcto:sum:Enrolled:qk:4]' />
             </encodings>
             <style>
               <style-rule element='mark'>
@@ -8306,8 +8345,8 @@
                 </bin>
               </calculation>
             </column>
+            <column datatype='integer' default-format='n#,##0;-#,##0' name='[Enrolled]' role='measure' type='quantitative' />
             <column datatype='string' name='[Initial Referral Source]' role='dimension' type='nominal' />
-            <column datatype='integer' default-format='n#,##0;-#,##0' name='[Inquired]' role='measure' type='quantitative' />
             <column datatype='date' name='[Month of Created Date]' role='dimension' type='ordinal' />
             <column datatype='string' name='[Primary State/Province]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
             <column datatype='string' name='[Region (group)]' role='dimension' semantic-role='[State].[Name]' type='nominal'>
@@ -8341,7 +8380,7 @@
             </column>
             <column-instance column='[Anticipated Start]' derivation='None' name='[none:Anticipated Start:nk]' pivot='key' type='nominal' />
             <column-instance column='[Initial Referral Source]' derivation='None' name='[none:Initial Referral Source:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Inquired]' derivation='Sum' name='[pcto:sum:Inquired:qk]' pivot='key' type='quantitative'>
+            <column-instance column='[Enrolled]' derivation='Sum' name='[pcto:sum:Enrolled:qk:4]' pivot='key' type='quantitative'>
               <table-calc ordering-type='Rows' type='PctTotal' />
             </column-instance>
           </datasource-dependencies>
@@ -8378,7 +8417,7 @@
             </view>
             <mark class='Automatic' />
             <encodings>
-              <text column='[federated.0hnnfg908x7mcj15ux0xm0pnzuj7].[pcto:sum:Inquired:qk]' />
+              <text column='[federated.0hnnfg908x7mcj15ux0xm0pnzuj7].[pcto:sum:Enrolled:qk:4]' />
             </encodings>
             <style>
               <style-rule element='mark'>
@@ -8393,6 +8432,924 @@
         <percentages enabled='true' mode='column-in-pane' />
       </table>
       <simple-id uuid='{9162E995-EFE1-4068-B7D5-97237834CB42}' />
+    </worksheet>
+    <worksheet name='Sheet 27'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='AllInquiries' name='federated.0hvkzhl1ybyguk11og1780pzfrop' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0hvkzhl1ybyguk11og1780pzfrop'>
+            <column datatype='date' name='[Created Date]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[FY Created]' role='dimension' type='nominal'>
+              <calculation class='categorical-bin' column='[Created Date]' default='&quot;Other&quot;' new-bin='true'>
+                <bin default-name='false' value='&quot;FY20 to Date&quot;'>
+                  <value>#2019-07-01#</value>
+                  <value>#2019-07-02#</value>
+                  <value>#2019-07-03#</value>
+                  <value>#2019-07-04#</value>
+                  <value>#2019-07-05#</value>
+                  <value>#2019-07-06#</value>
+                  <value>#2019-07-07#</value>
+                  <value>#2019-07-08#</value>
+                  <value>#2019-07-09#</value>
+                  <value>#2019-07-10#</value>
+                  <value>#2019-07-11#</value>
+                  <value>#2019-07-12#</value>
+                  <value>#2019-07-13#</value>
+                  <value>#2019-07-14#</value>
+                  <value>#2019-07-15#</value>
+                  <value>#2019-07-16#</value>
+                  <value>#2019-07-17#</value>
+                  <value>#2019-07-18#</value>
+                  <value>#2019-07-19#</value>
+                  <value>#2019-07-20#</value>
+                  <value>#2019-07-21#</value>
+                  <value>#2019-07-22#</value>
+                  <value>#2019-07-23#</value>
+                  <value>#2019-07-24#</value>
+                  <value>#2019-07-25#</value>
+                  <value>#2019-07-26#</value>
+                  <value>#2019-07-27#</value>
+                  <value>#2019-07-28#</value>
+                  <value>#2019-07-29#</value>
+                  <value>#2019-07-30#</value>
+                  <value>#2019-07-31#</value>
+                  <value>#2019-08-01#</value>
+                  <value>#2019-08-02#</value>
+                  <value>#2019-08-03#</value>
+                  <value>#2019-08-04#</value>
+                  <value>#2019-08-05#</value>
+                  <value>#2019-08-06#</value>
+                  <value>#2019-08-07#</value>
+                  <value>#2019-08-08#</value>
+                  <value>#2019-08-09#</value>
+                  <value>#2019-08-10#</value>
+                  <value>#2019-08-11#</value>
+                  <value>#2019-08-12#</value>
+                  <value>#2019-08-13#</value>
+                  <value>#2019-08-14#</value>
+                  <value>#2019-08-15#</value>
+                  <value>#2019-08-16#</value>
+                  <value>#2019-08-17#</value>
+                  <value>#2019-08-18#</value>
+                  <value>#2019-08-19#</value>
+                  <value>#2019-08-20#</value>
+                  <value>#2019-08-21#</value>
+                  <value>#2019-08-22#</value>
+                  <value>#2019-08-23#</value>
+                  <value>#2019-08-24#</value>
+                  <value>#2019-08-25#</value>
+                  <value>#2019-08-26#</value>
+                  <value>#2019-08-27#</value>
+                  <value>#2019-08-28#</value>
+                  <value>#2019-08-29#</value>
+                  <value>#2019-08-30#</value>
+                  <value>#2019-08-31#</value>
+                  <value>#2019-09-01#</value>
+                  <value>#2019-09-02#</value>
+                  <value>#2019-09-03#</value>
+                  <value>#2019-09-04#</value>
+                  <value>#2019-09-05#</value>
+                  <value>#2019-09-06#</value>
+                  <value>#2019-09-07#</value>
+                  <value>#2019-09-08#</value>
+                  <value>#2019-09-09#</value>
+                  <value>#2019-09-10#</value>
+                  <value>#2019-09-11#</value>
+                  <value>#2019-09-12#</value>
+                  <value>#2019-09-13#</value>
+                  <value>#2019-09-14#</value>
+                  <value>#2019-09-15#</value>
+                  <value>#2019-09-16#</value>
+                  <value>#2019-09-17#</value>
+                  <value>#2019-09-18#</value>
+                  <value>#2019-09-19#</value>
+                  <value>#2019-09-20#</value>
+                  <value>#2019-09-21#</value>
+                  <value>#2019-09-22#</value>
+                  <value>#2019-09-23#</value>
+                  <value>#2019-09-24#</value>
+                  <value>#2019-09-25#</value>
+                  <value>#2019-09-26#</value>
+                  <value>#2019-09-27#</value>
+                  <value>#2019-09-28#</value>
+                  <value>#2019-09-29#</value>
+                  <value>#2019-09-30#</value>
+                  <value>#2019-10-01#</value>
+                  <value>#2019-10-02#</value>
+                  <value>#2019-10-03#</value>
+                  <value>#2019-10-04#</value>
+                  <value>#2019-10-05#</value>
+                  <value>#2019-10-06#</value>
+                  <value>#2019-10-07#</value>
+                  <value>#2019-10-08#</value>
+                  <value>#2019-10-09#</value>
+                  <value>#2019-10-10#</value>
+                  <value>#2019-10-11#</value>
+                  <value>#2019-10-12#</value>
+                  <value>#2019-10-13#</value>
+                  <value>#2019-10-14#</value>
+                  <value>#2019-10-15#</value>
+                  <value>#2019-10-16#</value>
+                  <value>#2019-10-17#</value>
+                  <value>#2019-10-18#</value>
+                  <value>#2019-10-19#</value>
+                  <value>#2019-10-20#</value>
+                  <value>#2019-10-21#</value>
+                  <value>#2019-10-22#</value>
+                  <value>#2019-10-23#</value>
+                  <value>#2019-10-24#</value>
+                  <value>#2019-10-25#</value>
+                  <value>#2019-10-26#</value>
+                  <value>#2019-10-27#</value>
+                  <value>#2019-10-28#</value>
+                  <value>#2019-10-29#</value>
+                  <value>#2019-10-30#</value>
+                  <value>#2019-10-31#</value>
+                  <value>#2019-11-01#</value>
+                  <value>#2019-11-02#</value>
+                  <value>#2019-11-03#</value>
+                  <value>#2019-11-04#</value>
+                  <value>#2019-11-05#</value>
+                  <value>#2019-11-06#</value>
+                  <value>#2019-11-07#</value>
+                  <value>#2019-11-08#</value>
+                  <value>#2019-11-09#</value>
+                  <value>#2019-11-10#</value>
+                  <value>#2019-11-11#</value>
+                  <value>#2019-11-12#</value>
+                  <value>#2019-11-13#</value>
+                  <value>#2019-11-14#</value>
+                  <value>#2019-11-15#</value>
+                  <value>#2019-11-16#</value>
+                  <value>#2019-11-17#</value>
+                  <value>#2019-11-18#</value>
+                  <value>#2019-11-19#</value>
+                  <value>#2019-11-20#</value>
+                  <value>#2019-11-21#</value>
+                  <value>#2019-11-22#</value>
+                  <value>#2019-11-23#</value>
+                  <value>#2019-11-24#</value>
+                  <value>#2019-11-25#</value>
+                  <value>#2019-11-26#</value>
+                  <value>#2019-11-27#</value>
+                  <value>#2019-11-28#</value>
+                  <value>#2019-11-30#</value>
+                  <value>#2019-12-01#</value>
+                  <value>#2019-12-02#</value>
+                  <value>#2019-12-03#</value>
+                  <value>#2019-12-04#</value>
+                  <value>#2019-12-05#</value>
+                  <value>#2019-12-06#</value>
+                  <value>#2019-12-07#</value>
+                  <value>#2019-12-08#</value>
+                  <value>#2019-12-09#</value>
+                  <value>#2019-12-10#</value>
+                  <value>#2019-12-11#</value>
+                  <value>#2019-12-12#</value>
+                  <value>#2019-12-13#</value>
+                  <value>#2019-12-14#</value>
+                  <value>#2019-12-16#</value>
+                  <value>#2019-12-17#</value>
+                  <value>#2019-12-18#</value>
+                  <value>#2019-12-19#</value>
+                  <value>#2019-12-20#</value>
+                  <value>#2019-12-21#</value>
+                  <value>#2019-12-22#</value>
+                  <value>#2019-12-23#</value>
+                  <value>#2019-12-24#</value>
+                  <value>#2019-12-25#</value>
+                  <value>#2019-12-26#</value>
+                  <value>#2019-12-27#</value>
+                  <value>#2019-12-28#</value>
+                  <value>#2019-12-29#</value>
+                  <value>#2019-12-30#</value>
+                  <value>#2019-12-31#</value>
+                  <value>#2020-01-01#</value>
+                  <value>#2020-01-02#</value>
+                  <value>#2020-01-03#</value>
+                  <value>#2020-01-04#</value>
+                  <value>#2020-01-05#</value>
+                  <value>#2020-01-06#</value>
+                  <value>#2020-01-07#</value>
+                  <value>#2020-01-08#</value>
+                  <value>#2020-01-09#</value>
+                  <value>#2020-01-10#</value>
+                  <value>#2020-01-11#</value>
+                  <value>#2020-01-12#</value>
+                  <value>#2020-01-13#</value>
+                  <value>#2020-01-14#</value>
+                  <value>#2020-01-15#</value>
+                  <value>#2020-01-16#</value>
+                  <value>#2020-01-17#</value>
+                  <value>#2020-01-18#</value>
+                  <value>#2020-01-19#</value>
+                  <value>#2020-01-20#</value>
+                  <value>#2020-01-21#</value>
+                  <value>#2020-01-22#</value>
+                  <value>#2020-01-23#</value>
+                  <value>#2020-01-24#</value>
+                  <value>#2020-01-25#</value>
+                  <value>#2020-01-26#</value>
+                  <value>#2020-01-27#</value>
+                  <value>#2020-01-28#</value>
+                  <value>#2020-01-29#</value>
+                  <value>#2020-01-30#</value>
+                  <value>#2020-01-31#</value>
+                  <value>#2020-02-01#</value>
+                  <value>#2020-02-02#</value>
+                  <value>#2020-02-03#</value>
+                  <value>#2020-02-04#</value>
+                  <value>#2020-02-05#</value>
+                  <value>#2020-02-06#</value>
+                  <value>#2020-02-07#</value>
+                  <value>#2020-02-08#</value>
+                  <value>#2020-02-09#</value>
+                  <value>#2020-02-10#</value>
+                  <value>#2020-02-11#</value>
+                  <value>#2020-02-12#</value>
+                  <value>#2020-02-13#</value>
+                  <value>#2020-02-14#</value>
+                  <value>#2020-02-15#</value>
+                  <value>#2020-02-16#</value>
+                  <value>#2020-02-17#</value>
+                  <value>#2020-02-18#</value>
+                  <value>#2020-02-19#</value>
+                  <value>#2020-02-20#</value>
+                  <value>#2020-02-21#</value>
+                  <value>#2020-02-22#</value>
+                  <value>#2020-02-23#</value>
+                  <value>#2020-02-24#</value>
+                  <value>#2020-02-25#</value>
+                  <value>#2020-02-26#</value>
+                  <value>#2020-02-27#</value>
+                  <value>#2020-02-28#</value>
+                  <value>#2020-02-29#</value>
+                  <value>#2020-03-01#</value>
+                  <value>#2020-03-02#</value>
+                  <value>#2020-03-03#</value>
+                  <value>#2020-03-04#</value>
+                  <value>#2020-03-05#</value>
+                  <value>#2020-03-06#</value>
+                  <value>#2020-03-07#</value>
+                  <value>#2020-03-08#</value>
+                  <value>#2020-03-09#</value>
+                  <value>#2020-03-10#</value>
+                  <value>#2020-03-11#</value>
+                  <value>#2020-03-12#</value>
+                  <value>#2020-03-13#</value>
+                  <value>#2020-03-14#</value>
+                  <value>#2020-03-15#</value>
+                  <value>#2020-03-16#</value>
+                  <value>#2020-03-17#</value>
+                  <value>#2020-03-18#</value>
+                  <value>#2020-03-19#</value>
+                </bin>
+                <bin default-name='false' value='&quot;FY2019&quot;'>
+                  <value>#2018-07-01#</value>
+                  <value>#2018-07-02#</value>
+                  <value>#2018-07-03#</value>
+                  <value>#2018-07-04#</value>
+                  <value>#2018-07-05#</value>
+                  <value>#2018-07-06#</value>
+                  <value>#2018-07-08#</value>
+                  <value>#2018-07-09#</value>
+                  <value>#2018-07-10#</value>
+                  <value>#2018-07-11#</value>
+                  <value>#2018-07-12#</value>
+                  <value>#2018-07-13#</value>
+                  <value>#2018-07-14#</value>
+                  <value>#2018-07-15#</value>
+                  <value>#2018-07-16#</value>
+                  <value>#2018-07-17#</value>
+                  <value>#2018-07-18#</value>
+                  <value>#2018-07-19#</value>
+                  <value>#2018-07-20#</value>
+                  <value>#2018-07-21#</value>
+                  <value>#2018-07-22#</value>
+                  <value>#2018-07-23#</value>
+                  <value>#2018-07-24#</value>
+                  <value>#2018-07-25#</value>
+                  <value>#2018-07-26#</value>
+                  <value>#2018-07-27#</value>
+                  <value>#2018-07-28#</value>
+                  <value>#2018-07-29#</value>
+                  <value>#2018-07-30#</value>
+                  <value>#2018-07-31#</value>
+                  <value>#2018-08-01#</value>
+                  <value>#2018-08-02#</value>
+                  <value>#2018-08-03#</value>
+                  <value>#2018-08-05#</value>
+                  <value>#2018-08-06#</value>
+                  <value>#2018-08-07#</value>
+                  <value>#2018-08-08#</value>
+                  <value>#2018-08-09#</value>
+                  <value>#2018-08-10#</value>
+                  <value>#2018-08-11#</value>
+                  <value>#2018-08-12#</value>
+                  <value>#2018-08-13#</value>
+                  <value>#2018-08-14#</value>
+                  <value>#2018-08-15#</value>
+                  <value>#2018-08-16#</value>
+                  <value>#2018-08-17#</value>
+                  <value>#2018-08-18#</value>
+                  <value>#2018-08-19#</value>
+                  <value>#2018-08-20#</value>
+                  <value>#2018-08-21#</value>
+                  <value>#2018-08-22#</value>
+                  <value>#2018-08-23#</value>
+                  <value>#2018-08-24#</value>
+                  <value>#2018-08-25#</value>
+                  <value>#2018-08-26#</value>
+                  <value>#2018-08-27#</value>
+                  <value>#2018-08-28#</value>
+                  <value>#2018-08-29#</value>
+                  <value>#2018-08-30#</value>
+                  <value>#2018-08-31#</value>
+                  <value>#2018-09-01#</value>
+                  <value>#2018-09-02#</value>
+                  <value>#2018-09-03#</value>
+                  <value>#2018-09-04#</value>
+                  <value>#2018-09-05#</value>
+                  <value>#2018-09-06#</value>
+                  <value>#2018-09-07#</value>
+                  <value>#2018-09-08#</value>
+                  <value>#2018-09-09#</value>
+                  <value>#2018-09-10#</value>
+                  <value>#2018-09-11#</value>
+                  <value>#2018-09-12#</value>
+                  <value>#2018-09-13#</value>
+                  <value>#2018-09-14#</value>
+                  <value>#2018-09-15#</value>
+                  <value>#2018-09-16#</value>
+                  <value>#2018-09-17#</value>
+                  <value>#2018-09-18#</value>
+                  <value>#2018-09-19#</value>
+                  <value>#2018-09-20#</value>
+                  <value>#2018-09-21#</value>
+                  <value>#2018-09-22#</value>
+                  <value>#2018-09-23#</value>
+                  <value>#2018-09-24#</value>
+                  <value>#2018-09-25#</value>
+                  <value>#2018-09-26#</value>
+                  <value>#2018-09-27#</value>
+                  <value>#2018-09-28#</value>
+                  <value>#2018-09-29#</value>
+                  <value>#2018-09-30#</value>
+                  <value>#2018-10-01#</value>
+                  <value>#2018-10-02#</value>
+                  <value>#2018-10-03#</value>
+                  <value>#2018-10-04#</value>
+                  <value>#2018-10-05#</value>
+                  <value>#2018-10-06#</value>
+                  <value>#2018-10-07#</value>
+                  <value>#2018-10-08#</value>
+                  <value>#2018-10-09#</value>
+                  <value>#2018-10-10#</value>
+                  <value>#2018-10-11#</value>
+                  <value>#2018-10-12#</value>
+                  <value>#2018-10-13#</value>
+                  <value>#2018-10-14#</value>
+                  <value>#2018-10-15#</value>
+                  <value>#2018-10-16#</value>
+                  <value>#2018-10-17#</value>
+                  <value>#2018-10-18#</value>
+                  <value>#2018-10-19#</value>
+                  <value>#2018-10-20#</value>
+                  <value>#2018-10-21#</value>
+                  <value>#2018-10-22#</value>
+                  <value>#2018-10-23#</value>
+                  <value>#2018-10-24#</value>
+                  <value>#2018-10-25#</value>
+                  <value>#2018-10-26#</value>
+                  <value>#2018-10-27#</value>
+                  <value>#2018-10-28#</value>
+                  <value>#2018-10-29#</value>
+                  <value>#2018-10-30#</value>
+                  <value>#2018-10-31#</value>
+                  <value>#2018-11-01#</value>
+                  <value>#2018-11-02#</value>
+                  <value>#2018-11-03#</value>
+                  <value>#2018-11-04#</value>
+                  <value>#2018-11-05#</value>
+                  <value>#2018-11-06#</value>
+                  <value>#2018-11-07#</value>
+                  <value>#2018-11-08#</value>
+                  <value>#2018-11-09#</value>
+                  <value>#2018-11-10#</value>
+                  <value>#2018-11-12#</value>
+                  <value>#2018-11-13#</value>
+                  <value>#2018-11-14#</value>
+                  <value>#2018-11-15#</value>
+                  <value>#2018-11-16#</value>
+                  <value>#2018-11-17#</value>
+                  <value>#2018-11-18#</value>
+                  <value>#2018-11-19#</value>
+                  <value>#2018-11-20#</value>
+                  <value>#2018-11-21#</value>
+                  <value>#2018-11-22#</value>
+                  <value>#2018-11-23#</value>
+                  <value>#2018-11-24#</value>
+                  <value>#2018-11-25#</value>
+                  <value>#2018-11-26#</value>
+                  <value>#2018-11-27#</value>
+                  <value>#2018-11-28#</value>
+                  <value>#2018-11-29#</value>
+                  <value>#2018-11-30#</value>
+                  <value>#2018-12-01#</value>
+                  <value>#2018-12-02#</value>
+                  <value>#2018-12-03#</value>
+                  <value>#2018-12-04#</value>
+                  <value>#2018-12-05#</value>
+                  <value>#2018-12-06#</value>
+                  <value>#2018-12-07#</value>
+                  <value>#2018-12-08#</value>
+                  <value>#2018-12-09#</value>
+                  <value>#2018-12-10#</value>
+                  <value>#2018-12-11#</value>
+                  <value>#2018-12-12#</value>
+                  <value>#2018-12-13#</value>
+                  <value>#2018-12-14#</value>
+                  <value>#2018-12-15#</value>
+                  <value>#2018-12-16#</value>
+                  <value>#2018-12-17#</value>
+                  <value>#2018-12-18#</value>
+                  <value>#2018-12-19#</value>
+                  <value>#2018-12-20#</value>
+                  <value>#2018-12-21#</value>
+                  <value>#2018-12-22#</value>
+                  <value>#2018-12-23#</value>
+                  <value>#2018-12-24#</value>
+                  <value>#2018-12-25#</value>
+                  <value>#2018-12-26#</value>
+                  <value>#2018-12-27#</value>
+                  <value>#2018-12-28#</value>
+                  <value>#2018-12-29#</value>
+                  <value>#2018-12-30#</value>
+                  <value>#2018-12-31#</value>
+                  <value>#2019-01-01#</value>
+                  <value>#2019-01-02#</value>
+                  <value>#2019-01-03#</value>
+                  <value>#2019-01-04#</value>
+                  <value>#2019-01-05#</value>
+                  <value>#2019-01-06#</value>
+                  <value>#2019-01-07#</value>
+                  <value>#2019-01-08#</value>
+                  <value>#2019-01-09#</value>
+                  <value>#2019-01-10#</value>
+                  <value>#2019-01-11#</value>
+                  <value>#2019-01-12#</value>
+                  <value>#2019-01-13#</value>
+                  <value>#2019-01-14#</value>
+                  <value>#2019-01-15#</value>
+                  <value>#2019-01-16#</value>
+                  <value>#2019-01-17#</value>
+                  <value>#2019-01-18#</value>
+                  <value>#2019-01-19#</value>
+                  <value>#2019-01-20#</value>
+                  <value>#2019-01-21#</value>
+                  <value>#2019-01-22#</value>
+                  <value>#2019-01-23#</value>
+                  <value>#2019-01-24#</value>
+                  <value>#2019-01-25#</value>
+                  <value>#2019-01-26#</value>
+                  <value>#2019-01-27#</value>
+                  <value>#2019-01-28#</value>
+                  <value>#2019-01-29#</value>
+                  <value>#2019-01-30#</value>
+                  <value>#2019-01-31#</value>
+                  <value>#2019-02-01#</value>
+                  <value>#2019-02-02#</value>
+                  <value>#2019-02-03#</value>
+                  <value>#2019-02-04#</value>
+                  <value>#2019-02-05#</value>
+                  <value>#2019-02-06#</value>
+                  <value>#2019-02-07#</value>
+                  <value>#2019-02-08#</value>
+                  <value>#2019-02-09#</value>
+                  <value>#2019-02-10#</value>
+                  <value>#2019-02-11#</value>
+                  <value>#2019-02-12#</value>
+                  <value>#2019-02-13#</value>
+                  <value>#2019-02-14#</value>
+                  <value>#2019-02-15#</value>
+                  <value>#2019-02-16#</value>
+                  <value>#2019-02-17#</value>
+                  <value>#2019-02-18#</value>
+                  <value>#2019-02-19#</value>
+                  <value>#2019-02-20#</value>
+                  <value>#2019-02-21#</value>
+                  <value>#2019-02-22#</value>
+                  <value>#2019-02-23#</value>
+                  <value>#2019-02-24#</value>
+                  <value>#2019-02-25#</value>
+                  <value>#2019-02-26#</value>
+                  <value>#2019-02-27#</value>
+                  <value>#2019-02-28#</value>
+                  <value>#2019-03-01#</value>
+                  <value>#2019-03-02#</value>
+                  <value>#2019-03-03#</value>
+                  <value>#2019-03-04#</value>
+                  <value>#2019-03-05#</value>
+                  <value>#2019-03-06#</value>
+                  <value>#2019-03-07#</value>
+                  <value>#2019-03-08#</value>
+                  <value>#2019-03-09#</value>
+                  <value>#2019-03-10#</value>
+                  <value>#2019-03-11#</value>
+                  <value>#2019-03-12#</value>
+                  <value>#2019-03-13#</value>
+                  <value>#2019-03-14#</value>
+                  <value>#2019-03-15#</value>
+                  <value>#2019-03-16#</value>
+                  <value>#2019-03-17#</value>
+                  <value>#2019-03-18#</value>
+                  <value>#2019-03-19#</value>
+                  <value>#2019-03-20#</value>
+                  <value>#2019-03-21#</value>
+                  <value>#2019-03-22#</value>
+                  <value>#2019-03-23#</value>
+                  <value>#2019-03-24#</value>
+                  <value>#2019-03-25#</value>
+                  <value>#2019-03-26#</value>
+                  <value>#2019-03-27#</value>
+                  <value>#2019-03-28#</value>
+                  <value>#2019-03-29#</value>
+                  <value>#2019-03-30#</value>
+                  <value>#2019-03-31#</value>
+                  <value>#2019-04-01#</value>
+                  <value>#2019-04-02#</value>
+                  <value>#2019-04-03#</value>
+                  <value>#2019-04-04#</value>
+                  <value>#2019-04-05#</value>
+                  <value>#2019-04-06#</value>
+                  <value>#2019-04-07#</value>
+                  <value>#2019-04-08#</value>
+                  <value>#2019-04-09#</value>
+                  <value>#2019-04-10#</value>
+                  <value>#2019-04-11#</value>
+                  <value>#2019-04-12#</value>
+                  <value>#2019-04-13#</value>
+                  <value>#2019-04-14#</value>
+                  <value>#2019-04-15#</value>
+                  <value>#2019-04-16#</value>
+                  <value>#2019-04-17#</value>
+                  <value>#2019-04-18#</value>
+                  <value>#2019-04-19#</value>
+                  <value>#2019-04-20#</value>
+                  <value>#2019-04-21#</value>
+                  <value>#2019-04-22#</value>
+                  <value>#2019-04-23#</value>
+                  <value>#2019-04-24#</value>
+                  <value>#2019-04-25#</value>
+                  <value>#2019-04-26#</value>
+                  <value>#2019-04-27#</value>
+                  <value>#2019-04-28#</value>
+                  <value>#2019-04-29#</value>
+                  <value>#2019-04-30#</value>
+                  <value>#2019-05-01#</value>
+                  <value>#2019-05-02#</value>
+                  <value>#2019-05-03#</value>
+                  <value>#2019-05-04#</value>
+                  <value>#2019-05-05#</value>
+                  <value>#2019-05-06#</value>
+                  <value>#2019-05-07#</value>
+                  <value>#2019-05-08#</value>
+                  <value>#2019-05-09#</value>
+                  <value>#2019-05-10#</value>
+                  <value>#2019-05-11#</value>
+                  <value>#2019-05-12#</value>
+                  <value>#2019-05-13#</value>
+                  <value>#2019-05-14#</value>
+                  <value>#2019-05-15#</value>
+                  <value>#2019-05-16#</value>
+                  <value>#2019-05-17#</value>
+                  <value>#2019-05-18#</value>
+                  <value>#2019-05-19#</value>
+                  <value>#2019-05-20#</value>
+                  <value>#2019-05-21#</value>
+                  <value>#2019-05-22#</value>
+                  <value>#2019-05-23#</value>
+                  <value>#2019-05-24#</value>
+                  <value>#2019-05-25#</value>
+                  <value>#2019-05-26#</value>
+                  <value>#2019-05-27#</value>
+                  <value>#2019-05-28#</value>
+                  <value>#2019-05-29#</value>
+                  <value>#2019-05-30#</value>
+                  <value>#2019-05-31#</value>
+                  <value>#2019-06-01#</value>
+                  <value>#2019-06-02#</value>
+                  <value>#2019-06-03#</value>
+                  <value>#2019-06-04#</value>
+                  <value>#2019-06-05#</value>
+                  <value>#2019-06-06#</value>
+                  <value>#2019-06-07#</value>
+                  <value>#2019-06-08#</value>
+                  <value>#2019-06-09#</value>
+                  <value>#2019-06-10#</value>
+                  <value>#2019-06-11#</value>
+                  <value>#2019-06-12#</value>
+                  <value>#2019-06-13#</value>
+                  <value>#2019-06-14#</value>
+                  <value>#2019-06-15#</value>
+                  <value>#2019-06-16#</value>
+                  <value>#2019-06-17#</value>
+                  <value>#2019-06-18#</value>
+                  <value>#2019-06-19#</value>
+                  <value>#2019-06-20#</value>
+                  <value>#2019-06-21#</value>
+                  <value>#2019-06-22#</value>
+                  <value>#2019-06-23#</value>
+                  <value>#2019-06-24#</value>
+                  <value>#2019-06-25#</value>
+                  <value>#2019-06-26#</value>
+                  <value>#2019-06-27#</value>
+                  <value>#2019-06-28#</value>
+                  <value>#2019-06-29#</value>
+                  <value>#2019-06-30#</value>
+                </bin>
+              </calculation>
+            </column>
+            <column caption='Referral' datatype='string' name='[Initial Referral Source (group)]' role='dimension' type='nominal'>
+              <calculation class='categorical-bin' column='[Initial Referral Source]' default='&quot;Other&quot;' new-bin='true'>
+                <bin default-name='true' value='&quot;CARN&quot;'>
+                  <value>&quot;CARN&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;CF&quot;'>
+                  <value>&quot;CFAA&quot;</value>
+                  <value>&quot;CFAC&quot;</value>
+                  <value>&quot;CFAE&quot;</value>
+                  <value>&quot;CFAM&quot;</value>
+                  <value>&quot;CFAQ&quot;</value>
+                  <value>&quot;CFAR&quot;</value>
+                  <value>&quot;CFAU&quot;</value>
+                  <value>&quot;CFAV&quot;</value>
+                  <value>&quot;CFBA&quot;</value>
+                  <value>&quot;CFBC&quot;</value>
+                  <value>&quot;CFBD&quot;</value>
+                  <value>&quot;CFBE&quot;</value>
+                  <value>&quot;CFBI&quot;</value>
+                  <value>&quot;CFBK&quot;</value>
+                  <value>&quot;CFBL&quot;</value>
+                  <value>&quot;CFBM&quot;</value>
+                  <value>&quot;CFBO&quot;</value>
+                  <value>&quot;CFBOS&quot;</value>
+                  <value>&quot;CFBRW&quot;</value>
+                  <value>&quot;CFBS&quot;</value>
+                  <value>&quot;CFBY&quot;</value>
+                  <value>&quot;CFCE&quot;</value>
+                  <value>&quot;CFCH&quot;</value>
+                  <value>&quot;CFCM&quot;</value>
+                  <value>&quot;CFCN&quot;</value>
+                  <value>&quot;CFCO&quot;</value>
+                  <value>&quot;CFCT&quot;</value>
+                  <value>&quot;CFDA&quot;</value>
+                  <value>&quot;CFDD&quot;</value>
+                  <value>&quot;CFDF&quot;</value>
+                  <value>&quot;CFDR&quot;</value>
+                  <value>&quot;CFEL&quot;</value>
+                  <value>&quot;CFEN&quot;</value>
+                  <value>&quot;CFEPH&quot;</value>
+                  <value>&quot;CFESS&quot;</value>
+                  <value>&quot;CFFI&quot;</value>
+                  <value>&quot;CFGA&quot;</value>
+                  <value>&quot;CFGNS&quot;</value>
+                  <value>&quot;CFGR&quot;</value>
+                  <value>&quot;CFGRL&quot;</value>
+                  <value>&quot;CFGU&quot;</value>
+                  <value>&quot;CFHAICF&quot;</value>
+                  <value>&quot;CFHC&quot;</value>
+                  <value>&quot;CFHK&quot;</value>
+                  <value>&quot;CFHNYC&quot;</value>
+                  <value>&quot;CFHP&quot;</value>
+                  <value>&quot;CFHR&quot;</value>
+                  <value>&quot;CFHS&quot;</value>
+                  <value>&quot;CFIP&quot;</value>
+                  <value>&quot;CFJP&quot;</value>
+                  <value>&quot;CFKS&quot;</value>
+                  <value>&quot;CFLA&quot;</value>
+                  <value>&quot;CFLAWGU&quot;</value>
+                  <value>&quot;CFLD&quot;</value>
+                  <value>&quot;CFLI&quot;</value>
+                  <value>&quot;CFLN&quot;</value>
+                  <value>&quot;CFLR&quot;</value>
+                  <value>&quot;CFLS&quot;</value>
+                  <value>&quot;CFLT&quot;</value>
+                  <value>&quot;CFMCD&quot;</value>
+                  <value>&quot;CFME&quot;</value>
+                  <value>&quot;CFMF&quot;</value>
+                  <value>&quot;CFMG&quot;</value>
+                  <value>&quot;CFMH&quot;</value>
+                  <value>&quot;CFMI&quot;</value>
+                  <value>&quot;CFMIT&quot;</value>
+                  <value>&quot;CFMJ&quot;</value>
+                  <value>&quot;CFMK&quot;</value>
+                  <value>&quot;CFML&quot;</value>
+                  <value>&quot;CFMU&quot;</value>
+                  <value>&quot;CFMV&quot;</value>
+                  <value>&quot;CFMW&quot;</value>
+                  <value>&quot;CFMZ&quot;</value>
+                  <value>&quot;CFNB&quot;</value>
+                  <value>&quot;CFNC&quot;</value>
+                  <value>&quot;CFNE&quot;</value>
+                  <value>&quot;CFNF&quot;</value>
+                  <value>&quot;CFNI&quot;</value>
+                  <value>&quot;CFNK&quot;</value>
+                  <value>&quot;CFNKING&quot;</value>
+                  <value>&quot;CFNL&quot;</value>
+                  <value>&quot;CFNN&quot;</value>
+                  <value>&quot;CFNO&quot;</value>
+                  <value>&quot;CFNOR&quot;</value>
+                  <value>&quot;CFNR&quot;</value>
+                  <value>&quot;CFNWMA&quot;</value>
+                  <value>&quot;CFOB&quot;</value>
+                  <value>&quot;CFOX&quot;</value>
+                  <value>&quot;CFPA&quot;</value>
+                  <value>&quot;CFPCC&quot;</value>
+                  <value>&quot;CFPE&quot;</value>
+                  <value>&quot;CFPH&quot;</value>
+                  <value>&quot;CFPK&quot;</value>
+                  <value>&quot;CFPOC&quot;</value>
+                  <value>&quot;CFPRV&quot;</value>
+                  <value>&quot;CFPS&quot;</value>
+                  <value>&quot;CFPW&quot;</value>
+                  <value>&quot;CFPX&quot;</value>
+                  <value>&quot;CFQC&quot;</value>
+                  <value>&quot;CFRS&quot;</value>
+                  <value>&quot;CFRU&quot;</value>
+                  <value>&quot;CFRV&quot;</value>
+                  <value>&quot;CFRW&quot;</value>
+                  <value>&quot;CFSA&quot;</value>
+                  <value>&quot;CFSALEM&quot;</value>
+                  <value>&quot;CFSD&quot;</value>
+                  <value>&quot;CFSE&quot;</value>
+                  <value>&quot;CFSF&quot;</value>
+                  <value>&quot;CFSHA&quot;</value>
+                  <value>&quot;CFSI&quot;</value>
+                  <value>&quot;CFSJ&quot;</value>
+                  <value>&quot;CFSM&quot;</value>
+                  <value>&quot;CFSO&quot;</value>
+                  <value>&quot;CFSOM&quot;</value>
+                  <value>&quot;CFST&quot;</value>
+                  <value>&quot;CFSTM&quot;</value>
+                  <value>&quot;CFSV&quot;</value>
+                  <value>&quot;CFTC&quot;</value>
+                  <value>&quot;CFTE&quot;</value>
+                  <value>&quot;CFTH&quot;</value>
+                  <value>&quot;CFTN&quot;</value>
+                  <value>&quot;CFTR&quot;</value>
+                  <value>&quot;CFTRC&quot;</value>
+                  <value>&quot;CFTT&quot;</value>
+                  <value>&quot;CFTYN&quot;</value>
+                  <value>&quot;CFUPRI&quot;</value>
+                  <value>&quot;CFUT&quot;</value>
+                  <value>&quot;CFWALL&quot;</value>
+                  <value>&quot;CFWD&quot;</value>
+                  <value>&quot;CFWL&quot;</value>
+                  <value>&quot;CFWO&quot;</value>
+                  <value>&quot;CFWR&quot;</value>
+                  <value>&quot;CFWS&quot;</value>
+                  <value>&quot;CFWT&quot;</value>
+                  <value>&quot;CFWU&quot;</value>
+                  <value>&quot;CFXA&quot;</value>
+                  <value>&quot;HSVS&quot;</value>
+                  <value>&quot;NABO&quot;</value>
+                  <value>&quot;NABV&quot;</value>
+                  <value>&quot;NACA&quot;</value>
+                  <value>&quot;NAHR&quot;</value>
+                  <value>&quot;NANC&quot;</value>
+                  <value>&quot;NAPR&quot;</value>
+                  <value>&quot;NASP&quot;</value>
+                  <value>&quot;NEBE&quot;</value>
+                  <value>&quot;NEBS&quot;</value>
+                  <value>&quot;NEFP&quot;</value>
+                  <value>&quot;NEKS&quot;</value>
+                  <value>&quot;NEME&quot;</value>
+                  <value>&quot;NEMR&quot;</value>
+                  <value>&quot;NEMT&quot;</value>
+                  <value>&quot;NESH&quot;</value>
+                  <value>&quot;NESN&quot;</value>
+                  <value>&quot;NEUM&quot;</value>
+                  <value>&quot;NEUN&quot;</value>
+                  <value>&quot;NEUS&quot;</value>
+                  <value>&quot;NEVT&quot;</value>
+                  <value>&quot;NEWA&quot;</value>
+                  <value>&quot;NEWN&quot;</value>
+                  <value>&quot;NEWOR&quot;</value>
+                  <value>&quot;TRBU&quot;</value>
+                  <value>&quot;TRMY&quot;</value>
+                  <value>&quot;TRPH&quot;</value>
+                  <value>&quot;TRRIPR&quot;</value>
+                  <value>&quot;TRSM&quot;</value>
+                  <value>&quot;TRSP&quot;</value>
+                </bin>
+                <bin default-name='true' value='&quot;CPPX&quot;'>
+                  <value>&quot;CPPX&quot;</value>
+                </bin>
+                <bin default-name='true' value='&quot;HBSN&quot;'>
+                  <value>&quot;HBSN&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;Mkt&quot;'>
+                  <value>&quot;M17CUTT1&quot;</value>
+                  <value>&quot;M17HSSN1&quot;</value>
+                  <value>&quot;M17HSSN3&quot;</value>
+                  <value>&quot;M17HSUG1&quot;</value>
+                  <value>&quot;M17WAOL1&quot;</value>
+                  <value>&quot;M18CUTT1&quot;</value>
+                  <value>&quot;M18HSSN2&quot;</value>
+                  <value>&quot;M18HSSN3&quot;</value>
+                  <value>&quot;M18HSUG1&quot;</value>
+                  <value>&quot;M18HSUG2&quot;</value>
+                  <value>&quot;M18WACUGR1&quot;</value>
+                  <value>&quot;M18WADC1&quot;</value>
+                  <value>&quot;MDCF14&quot;</value>
+                  <value>&quot;MDCF19&quot;</value>
+                  <value>&quot;MDCF20&quot;</value>
+                  <value>&quot;MDCF20B&quot;</value>
+                  <value>&quot;MGRF120&quot;</value>
+                  <value>&quot;MGRF19&quot;</value>
+                  <value>&quot;MGRF220B&quot;</value>
+                  <value>&quot;MHSF19&quot;</value>
+                  <value>&quot;MHSF20&quot;</value>
+                  <value>&quot;MHSF20B&quot;</value>
+                  <value>&quot;MINI&quot;</value>
+                  <value>&quot;MLMC&quot;</value>
+                  <value>&quot;MMUSF20&quot;</value>
+                  <value>&quot;MOLF19&quot;</value>
+                  <value>&quot;MOLF20&quot;</value>
+                  <value>&quot;MOLF20B&quot;</value>
+                  <value>&quot;MTRF19&quot;</value>
+                  <value>&quot;MTRF20&quot;</value>
+                  <value>&quot;MTRF20B&quot;</value>
+                </bin>
+                <bin default-name='true' value='&quot;OPEN&quot;'>
+                  <value>&quot;OPEN&quot;</value>
+                </bin>
+                <bin default-name='true' value='&quot;SATS&quot;'>
+                  <value>&quot;SATS&quot;</value>
+                </bin>
+                <bin default-name='false' value='&quot;Stealth&quot;'>
+                  <value>&quot;APPL&quot;</value>
+                  <value>&quot;CANS&quot;</value>
+                  <value>&quot;CANT&quot;</value>
+                </bin>
+              </calculation>
+            </column>
+            <column datatype='string' name='[Initial Referral Source]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+              <calculation class='tableau' formula='1' />
+            </column>
+            <column datatype='string' name='[Student Type]' role='dimension' type='nominal' />
+            <column-instance column='[Student Type]' derivation='None' name='[none:Student Type:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Number of Records]' derivation='Sum' name='[pcto:sum:Number of Records:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Rows' type='PctTotal' />
+            </column-instance>
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0hvkzhl1ybyguk11og1780pzfrop].[FY Created]'>
+            <groupfilter function='union' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[FY Created]' member='&quot;FY20 to Date&quot;' />
+              <groupfilter function='member' level='[FY Created]' member='&quot;FY2019&quot;' />
+            </groupfilter>
+          </filter>
+          <manual-sort column='[federated.0hvkzhl1ybyguk11og1780pzfrop].[FY Created]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;FY2019&quot;</bucket>
+              <bucket>&quot;FY20 to Date&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <filter class='categorical' column='[federated.0hvkzhl1ybyguk11og1780pzfrop].[none:Student Type:nk]'>
+            <groupfilter function='member' level='[none:Student Type:nk]' member='&quot;First-Year Student&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0hvkzhl1ybyguk11og1780pzfrop].[none:Student Type:nk]</column>
+            <column>[federated.0hvkzhl1ybyguk11og1780pzfrop].[FY Created]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0hvkzhl1ybyguk11og1780pzfrop].[pcto:sum:Number of Records:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0hvkzhl1ybyguk11og1780pzfrop].[Initial Referral Source (group)]</rows>
+        <cols>[federated.0hvkzhl1ybyguk11og1780pzfrop].[FY Created]</cols>
+      </table>
+      <simple-id uuid='{05858B46-A574-4C63-A0A8-6125D8BB77CA}' />
     </worksheet>
   </worksheets>
   <dashboards>
@@ -9575,7 +10532,7 @@
       </cards>
       <simple-id uuid='{05EE34CE-13F4-4EC6-A865-BCDFC1F7C5E1}' />
     </window>
-    <window class='worksheet' maximized='true' name='Sheet 25'>
+    <window class='worksheet' name='Sheet 25'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -9644,6 +10601,34 @@
       </viewpoints>
       <active id='-1' />
       <simple-id uuid='{5D467250-A626-49FF-87F5-C27A92FF9B44}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Sheet 27'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.0hvkzhl1ybyguk11og1780pzfrop].[FY Created]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{B2E14800-5153-4E6B-AB24-46006F795387}' />
     </window>
   </windows>
 </workbook>
