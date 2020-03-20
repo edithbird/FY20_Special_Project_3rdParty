@@ -114,7 +114,7 @@ __Findings__
 
 # Total Inquiries by Anticipated Start Year
 
-According to Aaron Deets, our CAPPEX representative, given the unpredictable nature of inquiries, considering the funnel by anticipated start year is a good way to evaluate whether we see a return on investment.  It is important to note that confirmation and enrollment numbers will surely increase for 2020, as will all stages for 2021 and 2022. 2020 Cappex enrollments are likely to exceed those of 2019.
+According to Aaron Deets, our CAPPEX representative, given the unpredictable class distribution of inquiries, considering the funnel by anticipated start year is a good way to evaluate whether we see a return on investment.  Although numbers are final up until the anticipated term FA19, it is important to note that confirmations and enrollments  will surely increase for  FA20, as will all stages for FA21 and and FA22. FA20 Cappex enrollments are likely to exceed those of FA19.
 
 
 
@@ -166,7 +166,7 @@ kable(Cappex[c(1:10, 13:16, 18:20),c(2,4:8)],  caption = "", booktabs = T) %>%
 
 # Hobson Inquiries by Contract Period
 
-The following table shows the distribution of the of the Hobson inquiries for each contract year. The numbers are weighted heavily towards upper class students, as for Cappex, however, the Junior:Senior ratio has been variable over the past 4 years.
+The following table shows the distribution of the of the Hobson inquiries for each contract year. The numbers are weighted heavily towards upper class students, as for Cappex, however, the Junior:Senior ratio has been more variable over the past 4 years.
 
 
 
@@ -194,6 +194,8 @@ kable(Hobson[c(1:7, 9:14),c(2,4:8)], caption = "", booktabs = T) %>%
 #
 
 # Total Inquiries and Enrollments by State 2016-2020
+
+The next five tables explore third party vendor performance at the state level in order to determine if one vendor out-performs the other in out-of-state enrollments.
 
 ```{r}
 
@@ -406,22 +408,19 @@ kable(AnnualInquiriesbyState,
 
 __Conclusions__
 
-* Since 2016, Hobsons has consistently sent ~ 1,200 inquiry names per contract period. Cappex provides more inquiry names. Overall, ~ 50% of the the names are new to the University of Southern Maine. Cappex and Hobson account for 3.5% and 2.5% respectively of first-year student inquiries over the past 2 fiscal years. 
+* Since 2016, Hobsons has consistently sent ~ 1,200 inquiry names per contract period. Cappex provides more inquiry names, ~ 10% more. Overall, ~ 50% of the the names are new to the University of Southern Maine. Cappex and Hobson have accounted for 3.5% and 2.5% respectively of first-year student inquiries over the past 2 fiscal years. 
 
 * The ratio of Maine to out-of-state (New England) inquiries is similiarly ~ 30% : ~ 70% for both vendors. Neither has boasted more out-of-state enrollments. Between 80-85% of the enrollments are from in-state.
 
-
 * The data in Table 1 reveals that Cappex provides more inquiry names than Hobson, yet historically, Hobson inquiries were more likey to enroll. This may change for Fall 2020 enrollment, but it's too soon to know. 
-
 
 * The data in Tables 2 and 3, illustrate the distribution of anticipated start dates for each vendor and contract year. Although the majority of inquiries are Juniors and Seniors, the class mix and distribution varies from year to year. 
 
 * Tables 4-5 show inquiry and enrollment data by state. The intent was to explore whether one vendor performed better than the other in terms of enrolling out-of-state students. Both vendors perform equally. 
 
-* Year over year, tuition revenue justifies the contract cost. (This is calculated as )
+* Year over year, tuition revenue justifies the contract cost. 
 
-* Was the increase in Hobson cost worth the investment? TBA because we don't know if the out of state inquiries are for the RSP programs.
-
+* In FY20, USM changed its contract with Hobson by adding additional services. It is too know whether the increase in Hobson cost worth the investment? 
 
 
 ```{r bib, include=FALSE}
