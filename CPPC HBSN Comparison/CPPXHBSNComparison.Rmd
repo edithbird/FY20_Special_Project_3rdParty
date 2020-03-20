@@ -63,7 +63,7 @@ AnnualInquiries <- data %>% group_by(Annual_Contract, Initial.Referral.Source) %
 __Description__
 
 
-`r newthought('In anticipation of')`an evaluation of third party inquiry vendors, I was asked to provide a summary of Cappex and Hobson's performance over the past three years. 
+`r newthought('In anticipation of ')`an evaluation of third party inquiry vendors, I was asked to provide a summary of Cappex and Hobson's performance over the past three years. 
 
 #
 
@@ -80,49 +80,41 @@ Cappex and Hobson contract details are as follows:
   
   + Major's Awareness: 6 mos (August - January)
   
+#
+
+#
+
   
+#
+
+#
+
+#
+
+#
+
+  
+#
+
+#
+
+#
+  
+#
+
+#
+
 
 __Findings__
 
 
 
 
-
-
-# Total Inquiries (initial referral source) by Contract Period
-
-```{r}
-Contract <- rep(c("CY16", "CY17", "CY18", "CY19", "CY20"), times = 2)
-Vendor <- rep(c("CPPX", "HBSN"), times = c(5,5))
-
-Inquiries <- prettyNum(c(5824, 1957,2150,1871, 728, 873, 1216, 1222, 1221,1188), big.mark = ",") 
-
-toUs <- data.frame(Contract, Vendor, Inquiries)
-
-
-Tables <- toUs %>% 
-  spread(Vendor, Inquiries) 
-#%>% arrange(rev(Contract))
-```
-
-```{r, fig.margin = TRUE, fig.width=3.5, fig.height=3.5, fig.caption = "Inquiries per Vendor", cache=TRUE, message=FALSE}
-grid.table(Tables, theme =  ttheme_minimal())
-```
-  
-
-
-```{r}
-
-kable(AnnualInquiries[,c(2:7)], caption = '', booktabs = T) %>% 
-  kable_styling(full_width = NULL) %>%
-  pack_rows(index=c("Contract 2016 - 2017 " = 2, "Contract 2017 - 2018" = 2, "Contract 2018 - 2019" = 2, "Contract 2019 - 2020" = 2))
-```
-
 #
 
 # Total Inquiries by Anticipated Start Year
 
-According to Aaron Deets, our CAPPEX representative, given the unpredictable nature of inquiries, considering the funnel by anticipated start year is a good way to evaluate whether we see a return on investment. The table below explores the data from this perspective. It is important to note that confirmed and enrollment numbers will surely increase for 2020, as will all stages for 2021 and 2022. Cappex is on track to surpass last year.
+According to Aaron Deets, our CAPPEX representative, given the unpredictable nature of inquiries, considering the funnel by anticipated start year is a good way to evaluate whether we see a return on investment.  It is important to note that confirmation and enrollment numbers will surely increase for 2020, as will all stages for 2021 and 2022. 2020 Cappex enrollments are likely to exceed those of 2019.
 
 
 
@@ -201,10 +193,6 @@ kable(Hobson[c(1:7, 9:14),c(2,4:8)], caption = "", booktabs = T) %>%
 
 #
 
-#
-
-#
-
 # Total Inquiries and Enrollments by State 2016-2020
 
 ```{r}
@@ -232,8 +220,6 @@ kable(AnnualInquiriesbyState,
   pack_rows(index=c("Maine" = 2, "New Hampshire" = 2, "Massachusetts" = 2, "Connecticut"  = 2,   "Vermont" = 2,"Rhode Island" = 2, "Other"=2
                   ))
 ```
-
-#
 
 #
 
@@ -278,8 +264,6 @@ kable(AnnualInquiriesbyState,
   pack_rows(index=c("Maine" = 2, "New Hampshire" = 2, "Massachusetts" = 2, "Connecticut"  = 2,   "Vermont" = 2,"Rhode Island" = 1, "Other"=2
                   ))
 ```
-
-#
 
 #
 
@@ -420,25 +404,63 @@ kable(AnnualInquiriesbyState,
 #
 
 
-__Conclusion__
+__Conclusions__
 
-* Percent of inquiries that are the same vendor as the initial referral source 
+* Since 2016, Hobsons has consistently sent ~ 1,200 inquiry names per contract period. Cappex provides more inquiry names. Overall, ~ 50% of the the names are new to the University of Southern Maine. 
 
-* Is it different for each vendor?
+* The ratio of Maine to out-of-state (New England) inquiries is similiarly ~ 30% : ~ 70% for both vendors. Neither has boasted more out-of-state enrollments. Between 80-85% of the enrollments are from in-state.
 
-* Is Cappex positive ROI
 
-* Is Hobson positive ROI
+* The data in Table 1 reveals that Cappex provides more inquiry names than Hobson, yet historically, Hobson inquiries were more likey to enroll. This may change for Fall 2020 enrollment, but it's too soon to know. 
 
-* Which generates more ROI
+
+* The data in Tables 2 and 3, illustrate the distribution of anticipated start dates for each vendor and contract year. Although the majority of inquiries are Juniors and Seniors, the class mix and distribution varies from year to year. 
+
+* Tables 4-5 show inquiry and enrollment data by state. The intent was to explore whether one vendor performed better than the other in terms of enrolling out-of-state students. Both vendors perform equally. 
+
+* Year over year, tuition revenue justifies the contract cost. (This is calculated as )
 
 * Was the increase in Hobson cost worth the investment? TBA because we don't know if the out of state inquiries are for the RSP programs.
 
-* Is there an increase in quality applicants from either vendor.
 
-* Are conversions up or down?
 
 ```{r bib, include=FALSE}
 # create a bib file for the R packages used in this document
 knitr::write_bib(c('base', 'rmarkdown'), file = 'skeleton.bib')
+```
+
+
+
+
+
+
+
+
+```{r eval=FALSE, include=FALSE}
+# Total Inquiries (initial referral source) by Contract Period
+
+Contract <- rep(c("CY16", "CY17", "CY18", "CY19", "CY20"), times = 2)
+Vendor <- rep(c("CPPX", "HBSN"), times = c(5,5))
+
+Inquiries <- prettyNum(c(5824, 1957,2150,1871, 728, 873, 1216, 1222, 1221,1188), big.mark = ",") 
+
+toUs <- data.frame(Contract, Vendor, Inquiries)
+
+
+Tables <- toUs %>% 
+  spread(Vendor, Inquiries) 
+#%>% arrange(rev(Contract))
+```
+
+```{r eval=FALSE, fig.caption="Inquiries per Vendor", fig.height=3.5, fig.margin=TRUE, fig.width=3.5, message=FALSE, cache=TRUE, include=FALSE}
+grid.table(Tables, theme =  ttheme_minimal())
+```
+  
+
+
+```{r eval=FALSE, include=FALSE}
+
+kable(AnnualInquiries[,c(2:7)], caption = '', booktabs = T) %>% 
+  kable_styling(full_width = NULL) %>%
+  pack_rows(index=c("Contract 2016 - 2017 " = 2, "Contract 2017 - 2018" = 2, "Contract 2018 - 2019" = 2, "Contract 2019 - 2020" = 2))
 ```
